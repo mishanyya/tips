@@ -1,0 +1,45 @@
+/*
+Theme Name: template
+Theme URI:
+Description:
+Author:
+Author URI:
+*/
+
+li {
+list-style-type: none; /* Убираем маркеры в списках ul и li*/
+   }
+
+.menu-right-container ul#menu-right li.menu-item-has-children,li.menu-item-has-children:hover{
+position:relative;
+}
+
+
+.menu-right-container ul#menu-right li.menu-item-has-children ul.sub-menu{
+display: none;
+padding-right: 10px;
+z-index: 10;/*нужен для того, чтобы выпадающее меню было доступно для выбора полностью*/
+}
+
+.menu-right-container ul#menu-right li.menu-item-has-children:hover ul.sub-menu{
+display: block;
+position:absolute;
+width: 100%;
+left:-100%;
+top: 0%;
+}
+
+.menu-right-container ul#menu-right li.menu-item-has-children:hover ul.sub-menu>li:first-child:before{
+content: '';
+border-left: 10px solid green;
+border-right: 10px solid transparent;/*transparent - прозрачный фон*/
+border-top: 10px solid transparent;/*transparent - прозрачный фон*/
+border-bottom: 10px solid transparent;/*transparent - прозрачный фон*/
+position: absolute;
+right: -10px;
+top: 15px;
+}
+
+a:hover{
+box-shadow: 3px 3px 10px #808080; /* Параметры тени */
+}
