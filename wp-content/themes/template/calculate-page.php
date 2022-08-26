@@ -89,6 +89,9 @@ wp_nav_menu( array(
 //Default: '<ul id="%1$s" class="%2$s">%3$s</ul>'
 ) );
 ?>
+
+
+
 <div class="fixed-bottom position-relative border-top">
 <!--	<h4 class="text-center text-secondary"></h4>-->
 </div>

@@ -114,27 +114,12 @@ get_header(); ?>
         <?php dynamic_sidebar( 'right_side' ); ?><!--В скобки помещается id сайдбара из functions.php-->
       </div>
     <?php endif; ?>
+
     <?php
-    wp_nav_menu( array(
-    'theme_location'  => 'pages',// Расположение меню. Default: ''
-    'menu'            => '',//id, slug или название меню. Default: ''
-    'container'       => 'nav', // Основной контейнер меню, в него помещается <ul>. Either <div> or <nav>. Default: <div>
-    //Если он не нужен, то ставим так: container => false
-    'container_class' => '',// class основного контейнера. Default: menu-{menu slug}-container
-    'container_id'    => '',// id основного контейнера. Default: ''
-    'menu_class'      => 'nav flex-column  nav-pills ',// class <ul> этого меню. Default: menu
-    'menu_id'         => '', // id <ul> этого меню. Default: menu-{menu slug}
-    'depth'           => 0,     //Глубина вложенности (0 - неограничена, 2 - двухуровневое меню)
-    'echo'            => true,//Выводить на экран (true) или возвратить для обработки (false). Default: true
-    'fallback_cb'     => 'wp_page_menu',//Функция, срабатывающая, если никакое меню не найдено.если меню нет, установить '', Default: wp_page_menu
-    'before'          => '',//Текст перед <a> в меню. Default: ''
-    'after'           => '',//Текст после </a> в меню. Default: ''
-    'link_before'     => '',//Вставить текст после <a> в меню. Default: ''
-    'link_after'      => '',//Добавить текст перед </a> в меню. Default: ''
-    'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',//Если нужно <ul>, указывается шаблон. Если не нужно, указать '%3$s', но не оставлять пустым ''!!!
-    //Default: '<ul id="%1$s" class="%2$s">%3$s</ul>'
-    ) );
+    //меню для сайдбара страниц-калькуляторов
+    include "menustyleforcalculatepagessidebar.php";
     ?>
+
     <div class="fixed-bottom position-relative border-top">
     <!--	<h4 class="text-center text-secondary"></h4>-->
     </div>
@@ -145,10 +130,6 @@ get_header(); ?>
 
 
 
-
-
-
-
 <div class="d-block d-xl-none"><!--начало блока для маленьких экранов,это экран мобильника или планшета-->
      <div class="row">
        <div class="dropdown mx-auto mb-2">
@@ -156,36 +137,14 @@ get_header(); ?>
            Меню для выбора калькулятора
          </button>
          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-           <?php //вывод меню на экран
-           wp_nav_menu( array(
-           'theme_location'  => 'pages',// Расположение меню. Default: ''
-           'menu'            => '',//id, slug или название меню. Default: ''
-           'container'       => 'nav', // Основной контейнер меню, в него помещается <ul>. Either <div> or <nav>. Default: <div>
-           //Если он не нужен, то ставим так: container => false
-           'container_class' => '',// class основного контейнера. Default: menu-{menu slug}-container
-           'container_id'    => '',// id основного контейнера. Default: ''
-           'menu_class'      => 'nav flex-column nav-pills',// class <ul> этого меню. Default: menu
-           'menu_id'         => '', // id <ul> этого меню. Default: menu-{menu slug}
-           'depth'           => 0,     //Глубина вложенности (0 - неограничена, 2 - двухуровневое меню)
-           'echo'            => true,//Выводить на экран (true) или возвратить для обработки (false). Default: true
-           'fallback_cb'     => 'wp_page_menu',//Функция, срабатывающая, если никакое меню не найдено.если меню нет, установить '', Default: wp_page_menu
-           'before'          => '',//Текст перед <a> в меню. Default: ''
-           'after'           => '',//Текст после </a> в меню. Default: ''
-           'link_before'     => '',//Вставить текст после <a> в меню. Default: ''
-           'link_after'      => '',//Добавить текст перед </a> в меню. Default: ''
-           'items_wrap'      => '<ul id="%1$s" class="%2$s">%3$s</ul>',//Если нужно <ul>, указывается шаблон. Если не нужно, указать '%3$s', но не оставлять пустым ''!!!
-           //Default: '<ul id="%1$s" class="%2$s">%3$s</ul>'
-           ) );
+           <?php
+           //меню для сайдбара страниц-калькуляторов
+           include "menustyleforcalculatepagessidebar.php";
            ?>
          </div>
        </div>
   </div>
-
-
-
   <div class="row">
-
-
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 bg-light justify-content-center">
        <?php if ( have_posts() ) while ( have_posts() ) : the_post();  ?>
        <p class="">
@@ -202,10 +161,6 @@ get_header(); ?>
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
   <!-- Сюда можно включить свой код -->
-
-
-
-
 
   <h3>Расчет суммы платежа по кредиту</h3>
   <div class="input-group mb-2">
@@ -247,7 +202,7 @@ get_header(); ?>
   let interestrate=document.getElementsByClassName('InterestRate1')[0].value;
   let paymentterm=document.getElementsByClassName('PaymentTerm1')[0].value;
   let paymenttermayear=document.getElementsByClassName('PaymentTermAYear1')[0].value;
-  
+
   let PointRegExp=/\,/;//замена знака запятой на знак точки
   interestrate=interestrate.replace(PointRegExp, '.');
 
@@ -281,12 +236,7 @@ get_header(); ?>
 
     </div>
   </div>
-
-
 <!-- Конец своего кода -->
-
-
-
 
 </div>
 

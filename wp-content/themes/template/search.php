@@ -4,7 +4,7 @@
  */
 get_header(); ?>
 </div><!--закрытие тега container-->
-  
+
 <div class="container"><!--начало основного container of body-->
 <div class="d-none d-xl-block"><!--начало блока для больших экранов,это экран ноутбука или компьютера-->
   <div class="row"><!--начало основного row of body-->
@@ -22,7 +22,7 @@ get_header(); ?>
 					<?php endwhile;
 					else: echo '<h2> ничего не найдено</h2>'; endif;?>
 					<?php
-					
+
 					//создание пагинации для результатов поиска
 					$links=paginate_links( array(
 //'base' => '%_%',
@@ -41,7 +41,7 @@ get_header(); ?>
 //сколько показывать предыдущих и следующих страниц; (Default:2)
 //'prev_next' => true,
 //подключает и отключает ссылки на предыдущую и следующую страницы, true или false соответственно, (Default:'true')
-'prev_text'    => __('&#9668; Предыдущая'),//ссылка для перехода на предыдущую страницу (Default:'__('« Previous')')	
+'prev_text'    => __('&#9668; Предыдущая'),//ссылка для перехода на предыдущую страницу (Default:'__('« Previous')')
 'next_text'    => __('Следующая &#9658;'),//ссылка для перехода на следующую страницу (Default:'__('Next »')')
 'type' => 'array',
 //plain - <a></a>; list - <ul> <li><a>...</a></li> <ul>; array - массив c <a>; (Default:'plain')
@@ -52,7 +52,7 @@ get_header(); ?>
 //'after_page_number' => ''
 //текст, который добавляется к каждому номеру страницы (Default:empty)
 ));
-					
+
 					//вывод пагинации
 					echo "<nav><ul class='pagination d-flex justify-content-center'>";
 //стили для bootstrap
@@ -69,22 +69,16 @@ echo "<li class='page-item'>".$link."</li>";
 }
 }
 echo "</ul></nav>";
-
 					?>
-
         </div>
       </div>
-
     </div>
-
       <?php get_sidebar();  ?>
-
   </div>
 </div><!--конец блока для средних и больших экранов-->
 <div class="d-block d-xl-none"><!--начало блока для маленьких экранов,это экран мобильника или планшета-->
      <div class="row">
     <div class="col-lg-12 bg-light">
-           
 					<h1><?php printf( __( 'Результаты поиска: %s', 'template' ), '' . get_search_query() . '' ); ?></h1>
 					<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 					<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
@@ -94,16 +88,14 @@ echo "</ul></nav>";
 					<?php endwhile;
 					else: echo '<h2> ничего не найдено</h2>'; endif;?>
 					<?php
-					
 					//создание пагинации для результатов поиска
 					$links=paginate_links( array(
 
 'type' => 'array',
-'prev_text'    => __(' « '),//ссылка для перехода на предыдущую страницу (Default:'__('« Previous')')	
+'prev_text'    => __(' « '),//ссылка для перехода на предыдущую страницу (Default:'__('« Previous')')
 'next_text'    => __(' » '),//ссылка для перехода на следующую страницу (Default:'__('Next »')')
 
 ));
-					
 					//вывод пагинации
 					echo "<nav><ul class='pagination d-inline-block'>";
 //стили для bootstrap
@@ -120,17 +112,10 @@ echo "<li class='page-item d-inline-block'>".$link."</li>";
 }
 }
 echo "</ul></nav>";
-
 					?>
-
-
     </div>
-
-     
 
   </div>
 </div><!--конец блока для маленьких экранов-->
 </div>
-
-
   <?php get_footer();  ?>
