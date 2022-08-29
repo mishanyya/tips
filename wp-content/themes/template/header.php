@@ -24,13 +24,17 @@
 	</script>
 	<noscript><div><img src="https://mc.yandex.ru/watch/87413920" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 	<!-- /Yandex.Metrika counter -->
-	
+
+	<?php
+		wp_head();
+	?>
+
 <meta name="description" content="<?php for_description(); ?>">
-
-
-<?php
-	wp_head();
-?>
+<meta name="keywords" content="Linux,Ubuntu,программирование,сервер,C++,PHP,NASM,CSS,Javascript"/>
+<meta charset="text/html;utf-8"/>
+<meta http-equiv="content-language" content="ru"/>
+<meta name="robots" content="all"/>
+<meta name="document-state" content="Dynamic"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <!-- Для настройки поисковиков начало, остальные через плагин и хостинг TXT -->
@@ -38,60 +42,25 @@
 <!-- Конец блока для настройки поисковиков -->
 
 
-
-
-
-
-
 </head>
 <body class="">
-
+<!--заголовки сайта, не стоит использовать теги h1,h2 и другие, иначе нарушится иерархия тегов!!!-->
+	<div class="h1 bg-white text-center text-danger d-block"><?php bloginfo( 'name' );?></div>
+	<div class="h3 bg-white text-center text-info d-block"><?php	bloginfo( 'description' );?></div>
 
 <div class="container bg-light border-bottom my-3">
 
+
 <div class="d-none d-xl-block"><!--начало блока для больших экранов,это экран ноутбука или компьютера-->
-	<div class="row bg-white">
-	<h1 class="text-center text-danger mx-auto">
-	<?php
-	bloginfo( 'name' );
-	?>
-	</h1>
-	</div>
-
-	<div class="row bg-white">
-		<h2 class="text-center text-info mx-auto">
-		<?php
-		bloginfo( 'description' );
-		?>
-		</h2>
-		</div>
-
-<div class=" col-xl-4">
+<div class="col-xl-4">
 <?php dynamic_sidebar( 'sidebar-1' ); ?>
 </div>
 </div><!--конец блока для средних и больших экранов-->
 
-
-
 <div class="d-block d-xl-none "><!--начало блока для маленьких экранов,это экран мобильника или планшета-->
-
-
-<div class="row bg-white">
-<h1 class="text-center text-danger mx-auto">
-<?php
-bloginfo( 'name' );
-?>
-</h1>
-</div>
-
-<div class="row bg-white">
 <nav class="navbar d-flex justify-content-center">
-<div class="rounded">
 <?php dynamic_sidebar( 'sidebar-1' ); ?>
-</div>
 </nav>
-</div>
-
 </div><!--конец блока для маленьких экранов-->
 
 
@@ -122,7 +91,7 @@ bloginfo( 'name' );
 ?>
 </div><!--конец для больших экранов-->
 
-<div class="d-none d-sm-block d-xl-none"><!--начало блока для маленьких экранов,это экран  планшета-->
+<div class="d-block d-sm-block d-xl-none"><!--начало блока для всех! маленьких экранов, т.е планшета и телефона-->
 <?php
 		wp_nav_menu( array(
 	'theme_location'  => 'top-mini',// Расположение меню в шаблоне. (указано в функции register_nav_menus)
@@ -136,19 +105,6 @@ bloginfo( 'name' );
 ?>
 </div><!--конец для маленьких экранов-->
 
-<div class="d-block d-sm-none"><!--начало блока для маленьких экранов,это экран мобильника-->
-<?php
-		wp_nav_menu( array(
-	'theme_location'  => 'top-mini',// Расположение меню в шаблоне. (указано в функции register_nav_menus)
-	'container'       => 'nav', // Контейнер меню. Обворачиватель ul. Указывается тег контейнера (по умолчанию - div)
-	'container_class' => 'navbar  justify-content-left',// class контейнера (div тега),если не указано, то ставится стиль WP
-	'container_id'    => '',// id контейнера (div тега), если не указано, то отсутствует
-	'menu_class'      => 'nav nav-pills nav-fill',// class тега ul этого меню, если не указано, то отсутствует
-	'menu_id'         => '', // id ul тега этого меню, если не указано, то ставится id WP
-	'depth'           => 0,     //Глубина вложенности (0 - неограничена, 2 - двухуровневое меню)
-) );
-?>
-</div><!--конец для маленьких экранов-->
 
 </div>
 	</div>

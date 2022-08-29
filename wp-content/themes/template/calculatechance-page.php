@@ -13,7 +13,6 @@ get_header(); ?>
      <div class="row"><!--начало основной части row-->
       <div class="col-xl-12"><!--начало основной части div col--12-->
 
-
           <?php if ( have_posts() ) while ( have_posts() ) : the_post();  ?>
           <h1 class="text-center"><?php the_title(); ?></h1>
           <p>
@@ -27,13 +26,7 @@ get_header(); ?>
           //можно дописать код на javascript
 
           ?>
-
-
 <!-- Сюда можно включить свой код -->
-
-
-
-
 
 <script>
 
@@ -76,7 +69,6 @@ function gameplay1(){
   <div class="forOutputData  alert alert-success" role="alert">Здесь будет результат расчета<!-- вывод сообщения --></div>
 </div>
 
-
 <input type="button" class="btn btn-outline-info" value="нажать для расчета шанса" onclick="gameplay()"/>
 
 <hr/>
@@ -89,7 +81,6 @@ function gameplay1(){
     </div>
     <input type='text' placeholder="" class='forOutputData form-control'>
 </div>
-
 
 <div class="input-group mb-2">
   <div class="input-group-prepend">
@@ -107,7 +98,6 @@ function gameplay1(){
     <input type='text' placeholder="" class='forOutputData form-control'>
 </div>
 
-
 <div class="input-group mb-2">
   <div class="input-group-prepend">
     <span class="input-group-text">Общее количество объектов в поле 2</span>
@@ -118,14 +108,7 @@ function gameplay1(){
 <div class="input-group mb-2">
   <div class="forOutputData  alert alert-success" role="alert">Здесь будет результат расчета<!-- вывод сообщения --></div>
 </div>
-
 <input type="button" class="btn btn-outline-info" value="нажать для расчета шанса" onclick="gameplay1()"/>
-
-
-
-
-
-
 
 <!-- Конец своего кода -->
 <?php endwhile; ?>
@@ -140,13 +123,10 @@ function gameplay1(){
 		<?php dynamic_sidebar( 'right_side' ); ?><!--В скобки помещается id сайдбара из functions.php-->
 	</div>
 <?php endif; ?>
-
 <?php
 //меню для сайдбара страниц-калькуляторов
 include "menustyleforcalculatepagessidebar.php";
 ?>
-
-
 <div class="fixed-bottom position-relative border-top">
 <!--	<h4 class="text-center text-secondary"></h4>-->
 </div>
@@ -154,13 +134,6 @@ include "menustyleforcalculatepagessidebar.php";
 <!-- Конец нестандартного сайдбара с меню для формул -->
 </div>
 </div><!--конец блока для средних и больших экранов-->
-
-
-
-
-
-
-
 
 <div class="d-block d-xl-none"><!--начало блока для маленьких экранов,это экран мобильника или планшета-->
      <div class="row">
@@ -172,14 +145,12 @@ include "menustyleforcalculatepagessidebar.php";
            <?php
            //меню для сайдбара страниц-калькуляторов
            include "menustyleforcalculatepagessidebar.php";
-           ?>   
+           ?>
          </div>
        </div>
   </div>
 
-
 <div class="row">
-
 
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 bg-light justify-content-center">
      <?php if ( have_posts() ) while ( have_posts() ) : the_post();  ?>
@@ -192,8 +163,6 @@ include "menustyleforcalculatepagessidebar.php";
 
 </div>
 </div>
-
-
 
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -217,7 +186,6 @@ include "menustyleforcalculatepagessidebar.php";
 <div class="input-group mb-2">
   <div class="forDataForSmallScreen  alert alert-success" role="alert">Здесь будет результат расчета<!-- вывод сообщения --></div>
 </div>
-
           <script>
           // Создание объектов класса с параметрами для конструктора
           var game = new Game();
@@ -239,12 +207,9 @@ include "menustyleforcalculatepagessidebar.php";
           //  game1.doubleChance(a,b,a1,b1);
           }</script>
 
-
     <input type="button" class="btn btn-outline-info" value="нажать для расчета шанса" onclick="gameplayforsmallscreen()"/>
-
   </div>
   </div>
-
 <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 <!-- Сюда можно включить свой код -->
@@ -259,7 +224,6 @@ include "menustyleforcalculatepagessidebar.php";
     </div>
     <input type='text' placeholder="" class='forDataForSmallScreen form-control' inputmode='numeric'>
 </div>
-
 
 <div class="input-group mb-2">
   <div class="input-group-prepend">
@@ -277,7 +241,6 @@ include "menustyleforcalculatepagessidebar.php";
     <input type='text' placeholder="" class='forDataForSmallScreen form-control' inputmode='numeric'>
 </div>
 
-
 <div class="input-group mb-2">
   <div class="input-group-prepend">
     <span class="input-group-text">Общее количество объектов в поле 2</span>
@@ -288,7 +251,6 @@ include "menustyleforcalculatepagessidebar.php";
 <div class="input-group mb-2">
   <div class="forDataForSmallScreen  alert alert-success" role="alert">Здесь будет результат расчета<!-- вывод сообщения --></div>
 </div>
-
 
           <script>
           // Создание объектов класса с параметрами для конструктора
@@ -311,18 +273,12 @@ include "menustyleforcalculatepagessidebar.php";
           //  game1.doubleChance(a,b,a1,b1);
           }</script>
 
-
     <input type="button" class="btn btn-outline-info" value="нажать для расчета шанса" onclick="gameplayforsmallscreen1()"/>
 
   </div>
   </div>
-
-
   <!-- Конец своего кода -->
 
-
-
   </div>
-
   </div>
   <?php get_footer();  ?>

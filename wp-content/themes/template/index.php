@@ -6,16 +6,16 @@
 get_header(); ?>
 </div><!--закрытие тега container раздела header-->
 <div class="container"><!--начало основного container of body-->
-
 <div class="d-none d-xl-block"><!--начало блока для больших экранов,это экран ноутбука или компьютера-->
   <div class="row"><!--начало основного row of body-->
     <div class="col-xl-9 bg-light"><!--начало основной части без сайдбара-->
-     <div class="row"><!--начало основной части row-->
+
+
 <?php
 //вывести список постов
 include "listpostsoutput.php";
 ?>
-       </div><!--окончание основной части row-->
+
     </div><!--окончание основной части без сайдбара-->
 
       <?php get_sidebar();  ?><!--подключение сайдбара-->
@@ -29,15 +29,10 @@ include "pagination.php";
 </div><!--конец блока для средних и больших экранов-->
 
 <div class="d-block d-sm-none"><!--начало блока для маленьких экранов,это экран мобильника-->
-<div class="row"><!--начало основного row of body-->
-    <div class="bg-light"><!--начало основной части без сайдбара-->
-      <?php
+        <?php
       //вывести список постов
       include "listpostsoutput.php";
       ?>
-    </div><!--окончание основной части без сайдбара-->
-  </div><!--окончание основного row of body-->
-
   <div class="row bg-light border-top"><!--начало дополнительной части row для пагинации-->
     <?php
  include "pagination.php";
@@ -46,15 +41,10 @@ include "pagination.php";
 </div><!--конец блока для маленьких экранов-->
 
 <div class="d-none d-sm-block d-xl-none"><!--начало блока для маленьких экранов,это экран  планшета-->
-<div class="row"><!--начало основного row of body-->
-    <div class="bg-light"><!--начало основной части без сайдбара-->
-      <?php
+        <?php
       //вывести список постов
       include "listpostsoutput.php";
       ?>
-    </div><!--окончание основной части без сайдбара-->
-
-  </div><!--окончание основного row of body-->
 
   <div class="row bg-light border-top"><!--начало дополнительной части row для пагинации-->
     <?php

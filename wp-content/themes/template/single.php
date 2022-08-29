@@ -26,9 +26,9 @@ get_header(); ?>
 		<div class="nav flex-column nav-pills border bg-white text-center">
           <?php		//показать следующий по дате или предыдущий post | запись
 
-          
-          previous_post_link("%link",'&laquo; %title',true,'','category');
-          next_post_link("%link",'%title &raquo;',true,'','category');
+
+          previous_post_link("%link",'&laquo; %title',true,'');
+          next_post_link("%link",'%title &raquo;',true,'');
 
                     //пока заккоментировано до корректного решения показа поста из той же подкатегории
           //previous_post_link("%link",'&laquo; %title',true,'','category');
