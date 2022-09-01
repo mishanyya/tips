@@ -161,8 +161,16 @@ add_theme_support( 'title-tag' );
 add_filter( 'document_title', 'modify_document_title_for_front_page' );
 
 function modify_document_title_for_front_page( $title ) {
-	return is_front_page() ? "Создание программ и сайтов на Linux, а также работа с сервером Apache" : $title;
+  if (is_front_page()){//если главная страница
+    return "Создание программ и сайтов на Linux, а также работа с сервером Apache";
+  }
+  else if(is_category()){//выводит имя выбранной категории или подкатегории
+      return "Программирование и ".get_queried_object()->name;
+  }
+else {
+  return $title;
 }
+	}
 
 
 

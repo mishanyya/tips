@@ -38,17 +38,12 @@ wp_nav_menu( array(
 ?>
 
 
-
-
-
-
 		</div>
 	</div>
-	<div class="row d-flex flex-row-reverse mt-5">
-	<p>Сайт не собирает данных о посетителях!</p>
-</div>
-<div class="row d-flex flex-row-reverse">
-<p>По всем вопросам просьба писать на эл.почту <em>mishanyakashin@mail.ru</em></p>
+
+	<div class="row mt-4">
+	<p class="text-muted text-left">Сайт не собирает данных о посетителях!<br>
+По всем вопросам просьба писать на эл.почту <em>mishanyakashin@mail.ru</em></p>
 </div>
 
 
