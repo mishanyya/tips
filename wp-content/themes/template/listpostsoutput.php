@@ -1,4 +1,4 @@
-<h1 class="text-center">Статьи по программированию в Linux</h1>
+<h1 class="text-center">Подсказки по программированию для начинающих</h1>
  <div class="row"><!--начало основной части row-->
 <?php if (have_posts()) : while (have_posts()) : the_post();  ?>
 <h2 class="h3"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2><!--Заголовок постов-->
