@@ -13,7 +13,7 @@ get_header(); ?>
       <div class="col-xl-12"><!--начало основной части div col--12-->
 
           <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
-          <h1><?php the_title(); ?></h1>
+          <h1 class="text-center"><?php the_title(); ?></h1>
           <?php the_content(); ?>
           <?php /*echo 'Рубрики: '; the_category( ' | ' );*/  ?><!--показывает одну или несколько рубрик, к которым относится этот пост-->
           <?php /*the_tags( 'Тэги: ', ' | ', '' );*/?><!--показывает один или несколько тэгов,которые подхлдят для этого поста-->
@@ -54,7 +54,7 @@ get_header(); ?>
 
 
           <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
-          <h1><?php the_title(); ?></h1>
+          <h1 class="text-center"><?php the_title(); ?></h1>
           <?php the_content(); ?>
           <?php /*echo 'Рубрики: '; the_category( ' | ' );*/  ?><!--показывает одну или несколько рубрик, к которым относится этот пост-->
           <?php /*the_tags( 'Тэги: ', ' | ', '' );*/?><!--показывает один или несколько тэгов,которые подхлдят для этого поста-->
