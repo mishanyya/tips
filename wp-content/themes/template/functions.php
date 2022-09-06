@@ -3,6 +3,30 @@
  * @subpackage template
 
  */
+//замена стандартного текста динамического 'файла' robots.txt на нижеуказанный код
+add_action( 'do_robotstxt', 'my_robotstxt' );
+function my_robotstxt(){
+                $lines = [
+                               'User-agent: *',
+                               'Disallow: /wp-admin/',
+                               'Disallow: /wp-includes/',
+                               'Disallow: /cgi-bin',
+                               'Disallow: /?',
+                               'Disallow: *?s=',
+                               'Disallow: *&s=',
+                               'Disallow: /search',
+                               'Disallow: /author/',
+                               'Disallow: */embed$',
+                               'Disallow: */xmlrpc.php',
+                               'Disallow: *utm*=',
+                               'Disallow: *openstat=',
+                               'Allow: /wp-admin/admin-ajax.php',
+                               'Sitemap: http://mishanyya.ru/sitemap.xml',
+                               '',
+                ];
+                echo implode( "\r\n", $lines );
+                die; // обрываем работу PHP
+}
 
 
  //добавить класс в ссылку a при показе ссылки на следующий или предыдущий по дате пост | запись
@@ -165,7 +189,8 @@ function modify_document_title_for_front_page( $title ) {
     return "Создание программ и сайтов на Linux, а также работа с сервером Apache";
   }
   else if(is_category()){//выводит имя выбранной категории или подкатегории
-      return "Программирование и ".get_queried_object()->name;
+    $linetolow=get_queried_object()->name;
+      return "Программирование и ".mb_strtolower($linetolow);
   }
   else if(is_page('Калькуляторы online')){//если страница с указанным заголовком
       return "Онлайн-калькуляторы для вычислений";
@@ -183,7 +208,8 @@ function modify_document_title_for_front_page( $title ) {
       return "Меню статей для помощи в программировании";
   }
   else if(is_single() ){//если страница с постом,выводит заголовок поста
-      return get_post()->post_title." - подробное описание";
+    $linetolow=get_post()->post_title;
+      return "Подробное описание того, ".mb_strtolower($linetolow);
   }
 else {
   return $title;
@@ -199,13 +225,15 @@ if (is_front_page()){//если главная страница
   echo "Программирование приложений и сайтов под Linux на C++, ассемблере NASM, PHP, Javascript, а также создание стилей CSS.";
 }
 else if(is_page()){//если страница
-    echo "На этой странице можно воспользоваться таким инструментом, как ".get_the_title();//получить заголовок страницы, т.е. h1, а не title
+  $linetolow=get_the_title();
+    echo "На этой странице можно воспользоваться таким инструментом, как ".mb_strtolower($linetolow);//получить заголовок страницы, т.е. h1, а не title
 }
 else if(is_category()){//если выбрана одна из категорий
   echo "Статьи по теме ".get_queried_object()->name." для чайников. Содержат примеры кода, полезные для начинающих программистов.";
 }
 else if(is_single() ){//если страница с постом,выводит заголовок поста
-    echo "На этой странице сайта описывается в доступном виде, ".lcfirst(get_the_title());
+  $linetolow=get_the_title();
+    echo "На этой странице сайта описывается в доступном виде, ".mb_strtolower($linetolow);
 }
 else single_post_title();  //вывод заголовка текста
 }

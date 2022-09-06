@@ -35,6 +35,7 @@
 <meta name="document-state" content="Dynamic"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
 <!-- Для настройки поисковиков начало, остальные через плагин и хостинг TXT -->
 <meta name='wmail-verification' content='c6d123c690d9279a9b2036e8210b8a65' />
 <!-- Конец блока для настройки поисковиков -->

@@ -13,7 +13,7 @@ get_header(); ?>
       <div class="col-xl-12"><!--начало основной части div col--12-->
 
 
-					<h1><?php printf( __( 'Результаты поиска: %s', 'template' ), '' . get_search_query() . '' ); ?></h1>
+					<h1 class="text-center"><?php printf( __( 'Результаты поиска: %s', 'template' ), '' . get_search_query() . '' ); ?></h1>
 					<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 					<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 					<?php the_time('F j, Y'); ?>
@@ -79,7 +79,7 @@ echo "</ul></nav>";
 <div class="d-block d-xl-none"><!--начало блока для маленьких экранов,это экран мобильника или планшета-->
      <div class="row">
     <div class="col-lg-12 bg-light">
-					<h1><?php printf( __( 'Результаты поиска: %s', 'template' ), '' . get_search_query() . '' ); ?></h1>
+					<h1 class="text-center"><?php printf( __( 'Результаты поиска: %s', 'template' ), '' . get_search_query() . '' ); ?></h1>
 					<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 					<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
 					<?php the_time('F j, Y'); ?>
