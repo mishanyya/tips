@@ -156,10 +156,7 @@ register_sidebar(); // Регистрируем сайдбар
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
 */
-
-
 function load_bootstrap(){//подключение общих файлов скриптов JS и стилей CSS
-wp_enqueue_script('jquery-js', get_template_directory_uri().'/js/jquery.min.js');//подключение JQuery библиотеки для JS
 wp_enqueue_script('classes-js', get_template_directory_uri().'/js/calculateclasses.js');//подключение файлов JS к WP
 wp_enqueue_script('bootstrap-bundle-js', get_template_directory_uri().'/js/bootstrap.bundle.min.js');//подключение библиотеки Bundle Bootstrap JS
 wp_enqueue_script('popper-js', get_template_directory_uri().'/js/popper.min.js');//подключение Popper библиотеки для JS
@@ -168,6 +165,16 @@ wp_enqueue_style('style', get_template_directory_uri().'/style.css');//подк�
 }
 add_action('wp_enqueue_scripts', 'load_bootstrap');
 //подключение всех скриптов, собранных в функцию load_bootstrap через крючок (hook) wp_enqueue_scripts
+
+function load_local_jquery(){//подключение общих файлов скриптов JS и стилей CSS
+
+//Это подключение JQuery!  и оно работает!
+//а если закомментировать, то не будет!))
+wp_enqueue_script('jquery-js', get_template_directory_uri().'/js/jquery.min.js');//подключение JQuery библиотеки для JS
+}
+add_action('wp_enqueue_scripts', 'load_local_jquery');
+
+
 
 
 //включение тега title в страницы

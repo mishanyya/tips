@@ -5,7 +5,12 @@
 ?>
 <!DOCTYPE html>
 <html lang="ru">
-
+<?php
+// создать куку с названием Summ и значением 0
+if(!isset($_COOKIE['Summ'])){
+	SetCookie('Summ',0);
+}
+?>
 <head>
 
 	<!-- Yandex.Metrika counter -->
@@ -42,6 +47,7 @@
 
 
 </head>
+
 <body class="">
 <!--заголовки сайта, не стоит использовать теги h1,h2 и другие, иначе нарушится иерархия тегов!!!-->
 	<div class="h1 bg-white text-center text-danger d-block"><?php bloginfo( 'name' );?></div>
@@ -61,9 +67,6 @@
 <?php dynamic_sidebar( 'sidebar-1' ); ?>
 </nav>
 </div><!--конец блока для маленьких экранов-->
-
-
-
 
 
 
