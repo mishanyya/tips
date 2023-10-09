@@ -8,14 +8,7 @@ get_header();
 ?>
 </div><!--закрытие тега container-->
 
-
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
   <script>
-
-
 
   /* Локализация datepicker */
   $.datepicker.regional['ru'] = {
@@ -137,6 +130,31 @@ yy=Number(yy);
       var x=document.getElementsByClassName('day1')[0].value;
       var y=document.getElementsByClassName('day2')[0].value;
 
+      //сравнение дат, если идет большая, затем меньшая - они меняются местами
+      let resdate1=x.split(".");
+      let resdate2=y.split(".");
+      let xy; //временная переменная
+
+      let y1=resdate1[2];
+      let m1=resdate1[1];
+      let d1=resdate1[0];
+      let y2=resdate2[2];
+      let m2=resdate2[1];
+      let d2=resdate2[0];
+
+        let date1 = new Date(y1+'.'+m1+'.'+d1);
+        let date2 = new Date(y2+'.'+m2+'.'+d2);
+
+      if(date1.getTime() > date2.getTime()){ //сравнение дат
+        xy=x;
+        x=y;
+        y=xy;
+        }
+
+//alert(x);
+//alert(y);
+
+
      var adress="<?php
      echo get_template_directory_uri().'/php/calculatedifdate.php';//URL папки шаблона WordPress, например http://test/wp-content/themes/template
        ?>";
@@ -198,6 +216,7 @@ dd=Number(dd); // становится числом
 mm=Number(mm); // становится числом
 yy=Number(yy); // становится числом
 
+
 //добавить HTML-элемент
 if(dd!=0){  //если число=0
 $(".list-group").append("<li class='list-group-item'>"+x+" - "+y+"</li>" );
@@ -205,19 +224,6 @@ $(".list-group").append("<li class='list-group-item'>"+x+" - "+y+"</li>" );
 
   }
 });
-
-//alert(999);
-  //   url: "get_template_directory_uri().'/php/calculatedifdate.php'",
-      		//	type: 'POST',
-      	//		data: 'param1=2&param2=3', // можно также передать в виде объекта
-      			/*beforeSend: function( xhr ) {
-      				$('#idajax').text('Загрузка, 5 сек...');
-      		},
-      			success: function( data ) {
-      			$('#idajax').text('Отправить');
-      			alert( data );
-          }*/
-
 
 
   	});
@@ -249,6 +255,68 @@ $('.list-group').empty();//удалить все элементы внутри �
 
 });
 });
+
+//  function sort(){
+    jQuery(function($){ // есть разные варианты этой строчки, но такая мне нравится больше всего, т.к. всегда работает
+$( '#idsort' ).click( function(){ // при клике на элемент с id="idajax"
+//alert( 'JQuery у меня вроде работает!!!' ); // выводим сообщение просто для проверки работает ли jquery
+
+var ar=document.getElementsByClassName('list-group-item');//поместить все list-group-item в массив
+var ll=ar.length;  //кол-во элементов с классом list-group-item
+
+var data1;
+var data2;
+let d1,d11;
+let d2,d22;
+let el;
+let el1;
+let el2=1;
+let dd;
+
+for(el1=0;el1<ll;el1++,el2++){  //1 цикл для первой даты
+  data1 = ar[el1].innerHTML.split('.', 3); //разбить строку на подстроки по знаку '.'
+  data2=data1[2].split('-',1);                  //разбить строку на подстроки по знаку '.-'
+  d1=data1[0]+'.'+data1[1]+'.'+data2[0];
+  d11=data2[0]+'.'+data1[1]+'.'+data1[0];
+
+for(el=el2;el<ll;el++){  //2 цикл для второй даты
+  data1 = ar[el].innerHTML.split('.', 3); //разбить строку на подстроки по знаку '.'
+  data2=data1[2].split('-',1);                  //разбить строку на подстроки по знаку '.-'
+  d2=data1[0]+'.'+data1[1]+'.'+data2[0];
+  d22=data2[0]+'.'+data1[1]+'.'+data1[0];
+  //alert(d1+'+'+d2);
+  //alert(d11+'++'+d22);
+
+  if(d11>d22){
+    alert(d1+'>'+d2);
+//ar[el1].after('after'); // вставить строку "after" ПОСЛЕ выбранного html элемента
+//ar[el1].before('before'); // вставить строку "before" ПЕРЕД выбранным html элементом
+ar[el1].before(ar[el]); // вставить строку "before" ПЕРЕД выбранным html элементом
+
+}
+
+//  alert(ar[el1].innerHTML);//все содержимое li для d1
+//  alert(ar[el].innerHTML);//все содержимое li для d2
+
+
+/*  if(ar[el1].innerHTML.getTime() > ar[el].innerHTML.getTime()){ //сравнение дат
+    dd=ar[el].innerHTML;
+    ar[el].innerHTML=ar[el1].innerHTML;
+    ar[el1].innerHTML=dd;
+  }*/
+
+
+
+
+
+
+
+}    //2 цикл
+
+}    //1 цикл
+
+});
+});
 ///////////////////
           </script>
           <?php
@@ -260,10 +328,12 @@ $('.list-group').empty();//удалить все элементы внутри �
           */
                     ?>
 
-        <input type="button" class="btn btn-outline-info" value="нажать для расчета разницы между датами" id="idajax" onclick="funcajax()"/>
+        <input type="button" class="btn btn-outline-info" value="нажать для расчета разницы между датами" id="idajax"/>
 
 
-        <input type="button" class="btn btn-outline-info" value="сбросить" id="idclear" onclick="clear()"/>
+        <input type="button" class="btn btn-outline-info" value="сбросить" id="idclear"/>
+
+          <input type="button" class="btn btn-outline-info" value="сортировка" id="idsort"/>
 
             <!-- Конец своего кода -->
           <?php endwhile; ?>

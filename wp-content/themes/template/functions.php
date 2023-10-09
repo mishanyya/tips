@@ -171,6 +171,10 @@ function load_local_jquery(){//подключение общих файлов с
 //Это подключение JQuery!  и оно работает!
 //а если закомментировать, то не будет!))
 wp_enqueue_script('jquery-js', get_template_directory_uri().'/js/jquery.min.js');//подключение JQuery библиотеки для JS
+
+wp_enqueue_style('styleJquery', '//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css');//подключение стилей CSS
+wp_enqueue_script('classes-jsjquery',"https://code.jquery.com/jquery-1.12.4.js");//подключение файлов JS к WP
+wp_enqueue_script('classes-jsjquery1',"https://code.jquery.com/ui/1.12.1/jquery-ui.js");//подключение файлов JS к WP
 }
 add_action('wp_enqueue_scripts', 'load_local_jquery');
 
