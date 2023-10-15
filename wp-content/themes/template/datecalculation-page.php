@@ -112,6 +112,24 @@ get_header();
             <span class="input-group-text">д.</span>
           </div>
 
+
+          <div class="input-group mb-2">
+            <div class="input-group-prepend">
+            <span class="input-group-text double"></span>
+            <input type="button" hidden id="deletebutton" value="удалить повторяющиеся записи">
+            </div>
+
+            <div class="input-group-prepend">
+            <span class="input-group-text array"></span>
+            </div>
+            <div class="input-group-prepend">
+            <span class="input-group-text forwarning"></span>
+            </div>
+        </div>
+
+
+
+
           <script>
 var rez;//для деления
 
@@ -250,6 +268,7 @@ document.getElementsByClassName('dday')[0].innerHTML='';            /* В пер
 document.getElementsByClassName('mmonth')[0].innerHTML='';            /* В переменной data содержится ответ от ajax c сервера/файла php. */
 document.getElementsByClassName('yyear')[0].innerHTML='';
 
+document.getElementsByClassName('array')[0].innerHTML='';
 
 $('.list-group').empty();//удалить все элементы внутри класса list-group
 
@@ -272,6 +291,8 @@ let el,el0;
 let el1;
 let el2=1;
 let dd;
+let answer=0;//наличие совпадений
+let arr = []; //массив для всех дат
 
 for(el0=0;el0<ll;el0++){  //0 цикл
 
@@ -281,11 +302,16 @@ for(el1=0;el1<ll;el1++,el2++){  //1 цикл для первой даты
   d1=data1[0]+'.'+data1[1]+'.'+data2[0];
   d11=data2[0]+'.'+data1[1]+'.'+data1[0];
 
+
+
 for(el=el2;el<ll;el++){  //2 цикл для второй даты
   data1 = ar[el].innerHTML.split('.', 3); //разбить строку на подстроки по знаку '.'
   data2=data1[2].split('-',1);                  //разбить строку на подстроки по знаку '.-'
   d2=data1[0]+'.'+data1[1]+'.'+data2[0];
   d22=data2[0]+'.'+data1[1]+'.'+data1[0];
+
+
+
   //alert(d1+'+'+d2);
   //alert(d11+'++'+d22);
 
@@ -294,32 +320,114 @@ for(el=el2;el<ll;el++){  //2 цикл для второй даты
 //ar[el1].after('after'); // вставить строку "after" ПОСЛЕ выбранного html элемента
 //ar[el1].before('before'); // вставить строку "before" ПЕРЕД выбранным html элементом
 ar[el1].before(ar[el]); // вставить строку "before" ПЕРЕД выбранным html элементом
-
 }
 
-//  alert(ar[el1].innerHTML);//все содержимое li для d1
-//  alert(ar[el].innerHTML);//все содержимое li для d2
-
-
-/*  if(ar[el1].innerHTML.getTime() > ar[el].innerHTML.getTime()){ //сравнение дат
-    dd=ar[el].innerHTML;
-    ar[el].innerHTML=ar[el1].innerHTML;
-    ar[el1].innerHTML=dd;
-  }*/
-
-
-
-
-
-
-
 }    //2 цикл
-
 }    //1 цикл
 }   //0 цикл
 
+
+
+
+for(el=0;el<(ll-1);el++){  //цикл для поиска совпадений
+  //поиск совпадений дат
+if(ar[el].innerHTML==ar[el+1].innerHTML){
+  answer=1;
+
+  // добавление элементу класс
+ar[el].classList.add("doubleremove");
+ar[el].classList.add("text-danger");
+}
+//поиск совмащенных дат
+}//конец цикла
+
+if(answer==1){
+  document.getElementsByClassName('double')[0].innerHTML="Найдены совпадения!";
+  // добавление элементу класс
+document.getElementsByClassName('double')[0].classList.add("text-danger");
+
+document.getElementById('iddoubleclear').classList.remove("invisible");
+document.getElementById('iddoubleclear').classList.add("visible");
+
+}
+
+
+let i=0;
+let word;
+for(el=0;el<ll;el++,i++){  //цикл для поиска совпадений
+
+word = ar[el].innerHTML.split('-', 3); //разбить строку на подстроки по знаку '-'
+
+arr[i]=word[0];
+i++;
+arr[i]=word[1];
+
+}
+
+let data01,data02,data011,data022,data0111,data0222;
+for(i=1;i<(arr.length);i=i+2){
+
+ data01=arr[i].split('.', 3); //разбить строку на подстроки по знаку '.'
+ data02=arr[i+1].split('.', 3); //разбить строку на подстроки по знаку '.'
+data011=data01[2]+'.'+data01[1]+'.'+data01[0];
+data022=data02[2]+'.'+data02[1]+'.'+data02[0];
+data0111=new Date(data011);
+data0222=new Date(data022);
+
+  if(data0111>data0222){
+  //ar[i-1].classList.add("bg-success");
+//  ar[i].classList.add("bg-success");
+  document.getElementsByClassName('array')[0].innerHTML='Найдены совмещенные даты!';
+   document.getElementsByClassName('array')[0].classList.add("text-success");
+  }
+
+}
+
+});//конец функции
+});
+
+
+
+//  function удаление повторных записей(){
+    jQuery( function( $ ){ // есть разные варианты этой строчки, но такая мне нравится больше всего, т.к. всегда работает
+$( '#iddoubleclear' ).click( function(){ // при клике на элемент с id="idajax"
+//alert( 'JQuery у меня вроде работает!!!' ); // выводим сообщение просто для проверки работает ли jquery
+
+var ar=document.getElementsByClassName('list-group-item');//поместить все list-group-item в массив
+var ll=ar.length;  //кол-во элементов с классом list-group-item
+let i;
+
+for(i=0;i<ll;i++){
+
+  if(ar[i].classList.contains("doubleremove")){  //проверка наличия класса в элементе
+ar[i].remove(); //удалить элемент
+ }
+ document.getElementById('iddoubleclear').classList.remove("visible");
+ document.getElementById('iddoubleclear').classList.add("invisible");
+ document.getElementsByClassName('double')[0].innerHTML="";
+
+//document.getElementsByClassName('forwarning')[0].innerHTML="рекомендуется провести повторный перерасчет!";
+
+}
+
+document.getElementsByClassName('array')[0].innerHTML='';
+
+document.getElementsByClassName('forwarning')[0].innerHTML="рекомендуется провести повторный перерасчет!";
+
 });
 });
+
+
+jQuery( function( $ ){ // есть разные варианты этой строчки, но такая мне нравится больше всего, т.к. всегда работает
+$( '#idajax1' ).click( function(){ // при клике на элемент с id="idajax"
+//alert( 'JQuery у меня вроде работает!!!' ); // выводим сообщение просто для проверки работает ли jquery
+
+
+
+});
+});
+
+
 ///////////////////
           </script>
           <?php
@@ -336,8 +444,10 @@ ar[el1].before(ar[el]); // вставить строку "before" ПЕРЕД в�
 
         <input type="button" class="btn btn-outline-info" value="сбросить" id="idclear"/>
 
-          <input type="button" class="btn btn-outline-info" value="сортировка" id="idsort"/>
+          <input type="button" class="btn btn-outline-info" value="проверить введеные даты" id="idsort"/>
 
+            <input type="button" class="btn btn-outline-info text-danger invisible" value="удалить повторяющиеся записи/даты" id="iddoubleclear"/>
+  <input type="button" class="btn btn-outline-info" value="нажать для перерасчета разницы между датами" id="idajax1"/>
             <!-- Конец своего кода -->
           <?php endwhile; ?>
         </div>
