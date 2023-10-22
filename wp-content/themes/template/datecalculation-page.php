@@ -8,28 +8,6 @@ get_header();
 ?>
 </div><!--закрытие тега container-->
 
-  <script>
-
-  /* Локализация datepicker */
-  $.datepicker.regional['ru'] = {
-  	closeText: 'Закрыть',
-  	prevText: 'Предыдущий',
-  	nextText: 'Следующий',
-  	currentText: 'Сегодня',
-  	monthNames: ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'],
-  	monthNamesShort: ['Янв','Фев','Мар','Апр','Май','Июн','Июл','Авг','Сен','Окт','Ноя','Дек'],
-  	dayNames: ['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'],
-  	dayNamesShort: ['вск','пнд','втр','срд','чтв','птн','сбт'],
-  	dayNamesMin: ['Вс','Пн','Вт','Ср','Чт','Пт','Сб'],
-  	weekHeader: 'Не',
-  	dateFormat: 'dd.mm.yy',
-  	firstDay: 1,
-  	isRTL: false,
-  	showMonthAfterYear: false,
-  	yearSuffix: ''
-  };
-  $.datepicker.setDefaults($.datepicker.regional['ru']);
-  </script>
 
 <div class="container"><!--начало основного container of body-->
 <div class="d-none d-xl-block"><!--начало блока для больших экранов,это экран ноутбука или компьютера-->
@@ -37,7 +15,6 @@ get_header();
     <div class="col-xl-9 bg-light"><!--начало основной части без сайдбара-->
      <div class="row"><!--начало основной части row-->
       <div class="col-xl-12"><!--начало основной части div col--12-->
-
 
           <?php if ( have_posts() ) while ( have_posts() ) : the_post();  ?>
           <h1 class="text-center"><?php the_title(); ?></h1>
@@ -49,8 +26,6 @@ get_header();
           //здесь и далее можно прописать свой код на php
           //можно дописать код на javascript
           ?>
-
-
 
           <!-- Сюда можно включить свой код -->
           <h3>Расчет разницы между датами в днях</h3>
@@ -68,9 +43,6 @@ get_header();
       <input type='text'  placeholder="dd.mm.yyyy" class='day2 form-control'  id='datepicker2'>
       </div>
 
-
-
-
           <script>
           $(function(){
           	$("#datepicker1").datepicker();
@@ -80,9 +52,6 @@ get_header();
             $("#datepicker2").datepicker();
           });
           </script>
-
-
-
 
           <div class="input-group mb-2">
             <div class="input-group-prepend">
@@ -95,7 +64,6 @@ get_header();
             <div class="dday alert alert-success form-control" role="alert"><!-- вывод сообщения --></div>
             <span class="input-group-text">д.</span>
           </div>
-
 
           <ul class="list-group">
           </ul>
@@ -112,7 +80,6 @@ get_header();
             <span class="input-group-text">д.</span>
           </div>
 
-
           <div class="input-group mb-2">
             <div class="input-group-prepend">
             <span class="input-group-text double"></span>
@@ -126,40 +93,46 @@ get_header();
             <span class="input-group-text forwarning"></span>
             </div>
         </div>
+        <script>
 
-
-
+        /* Локализация datepicker */
+        $.datepicker.regional['ru'] = {
+          closeText: 'Закрыть',
+          prevText: 'Предыдущий',
+          nextText: 'Следующий',
+          currentText: 'Сегодня',
+          monthNames: ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'],
+          monthNamesShort: ['Янв','Фев','Мар','Апр','Май','Июн','Июл','Авг','Сен','Окт','Ноя','Дек'],
+          dayNames: ['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'],
+          dayNamesShort: ['вск','пнд','втр','срд','чтв','птн','сбт'],
+          dayNamesMin: ['Вс','Пн','Вт','Ср','Чт','Пт','Сб'],
+          weekHeader: 'Не',
+          dateFormat: 'dd.mm.yy',
+          firstDay: 1,
+          isRTL: false,
+          showMonthAfterYear: false,
+          yearSuffix: ''
+        };
+        $.datepicker.setDefaults($.datepicker.regional['ru']);
+        </script>
 
           <script>
-var rez;//для деления
-
-var dd=0;//для подсчета дней
-var mm=0;//для подсчета месяцев
-var yy=0;//для подсчета лет
-dd=Number(dd);
-mm=Number(mm);
-yy=Number(yy);
-
         //  function funcajax(){
             jQuery( function( $ ){ // есть разные варианты этой строчки, но такая мне нравится больше всего, т.к. всегда работает
   	$( '#idajax' ).click( function(){ // при клике на элемент с id="idajax"
   		//alert( 'JQuery у меня вроде работает!!!' ); // выводим сообщение просто для проверки работает ли jquery
-
       var x=document.getElementsByClassName('day1')[0].value;
       var y=document.getElementsByClassName('day2')[0].value;
-
       //сравнение дат, если идет большая, затем меньшая - они меняются местами
       let resdate1=x.split(".");
       let resdate2=y.split(".");
       let xy; //временная переменная
-
       let y1=resdate1[2];
       let m1=resdate1[1];
       let d1=resdate1[0];
       let y2=resdate2[2];
       let m2=resdate2[1];
       let d2=resdate2[0];
-
         let date1 = new Date(y1+'.'+m1+'.'+d1);
         let date2 = new Date(y2+'.'+m2+'.'+d2);
 
@@ -169,13 +142,10 @@ yy=Number(yy);
         y=xy;
         }
 
-//alert(x);
-//alert(y);
-
-
      var adress="<?php
      echo get_template_directory_uri().'/php/calculatedifdate.php';//URL папки шаблона WordPress, например http://test/wp-content/themes/template
        ?>";
+
   //  alert(adress);
 //ajax запрос
     $.ajax({
@@ -185,65 +155,17 @@ yy=Number(yy);
 	//data: {param1: x},     /* Параметры передаваемые в запросе. */
 	data: 'param1='+x+'&param2='+y,     /* Параметры передаваемые в запросе. */
   //req.open('GET', 'example.php?var='+varjs, true);
-
 	success: function(data){   /* функция которая будет выполнена после успешного запроса.  */
-
     data = data.split('-', 3); //разбить строку на подстроки по
-
-
 		document.getElementsByClassName('dday')[0].innerHTML=data[2];            /* В переменной data содержится ответ от ajax c сервера/файла php. */
     document.getElementsByClassName('mmonth')[0].innerHTML=data[1];            /* В переменной data содержится ответ от ajax c сервера/файла php. */
     document.getElementsByClassName('yyear')[0].innerHTML=data[0];            /* В переменной data содержится ответ от ajax c сервера/файла php. */
-
-
-data[0]=Number(data[0]); // становится числом
-data[1]=Number(data[1]); // становится числом
-data[2]=Number(data[2]); // становится числом
-
-    dd=dd+data[2];
-    mm=mm+data[1];
-    yy=yy+data[0];
-
-//если дней >31 , идет деление на 30, результат прибавляется к месяцам, а остаток идет в дни
-//если месяцев >12 , идет деление на 12, результат прибавляется к годам, а остаток идет в месяцы
-
-if(dd>31){
-  rez=Math.floor(dd/31); //целое
-  dd=dd%31;//остаток
-  rez=Number(rez); // становится числом
-  mm=mm+rez;//добавить к месяцам
-}
-
-
-if(mm>12){
-  rez=Math.floor(mm/12); //целое
-  mm=mm%12;//остаток
-  rez=Number(rez); // становится числом
-  yy=yy+rez;//добавить к месяцам
-}
-
-
-
-    document.getElementsByClassName('daysum')[0].innerHTML=dd;            /* В переменной data содержится ответ от ajax c сервера/файла php. */
-    document.getElementsByClassName('monthsum')[0].innerHTML=mm;            /* В переменной data содержится ответ от ajax c сервера/файла php. */
-    document.getElementsByClassName('yearsum')[0].innerHTML=yy;            /* В переменной data содержится ответ от ajax c сервера/файла php. */
-
-
-
-dd=Number(dd); // становится числом
-mm=Number(mm); // становится числом
-yy=Number(yy); // становится числом
-
-
 //добавить HTML-элемент
-if(dd!=0){  //если число=0
+if((x!=y)&&(x!='')&&(y!='')){  //если числа не равны
 $(".list-group").append("<li class='list-group-item'>"+x+" - "+y+"</li>" );
 }
-
   }
 });
-
-
   	});
   });
       //    }
@@ -263,15 +185,11 @@ yy=0;
 document.getElementsByClassName('daysum')[0].innerHTML='';            /* В переменной data содержится ответ от ajax c сервера/файла php. */
 document.getElementsByClassName('monthsum')[0].innerHTML='';            /* В переменной data содержится ответ от ajax c сервера/файла php. */
 document.getElementsByClassName('yearsum')[0].innerHTML='';
-
 document.getElementsByClassName('dday')[0].innerHTML='';            /* В переменной data содержится ответ от ajax c сервера/файла php. */
 document.getElementsByClassName('mmonth')[0].innerHTML='';            /* В переменной data содержится ответ от ajax c сервера/файла php. */
 document.getElementsByClassName('yyear')[0].innerHTML='';
-
 document.getElementsByClassName('array')[0].innerHTML='';
-
 $('.list-group').empty();//удалить все элементы внутри класса list-group
-
 });
 });
 
@@ -295,14 +213,11 @@ let answer=0;//наличие совпадений
 let arr = []; //массив для всех дат
 
 for(el0=0;el0<ll;el0++){  //0 цикл
-
 for(el1=0;el1<ll;el1++,el2++){  //1 цикл для первой даты
   data1 = ar[el1].innerHTML.split('.', 3); //разбить строку на подстроки по знаку '.'
   data2=data1[2].split('-',1);                  //разбить строку на подстроки по знаку '.-'
   d1=data1[0]+'.'+data1[1]+'.'+data2[0];
   d11=data2[0]+'.'+data1[1]+'.'+data1[0];
-
-
 
 for(el=el2;el<ll;el++){  //2 цикл для второй даты
   data1 = ar[el].innerHTML.split('.', 3); //разбить строку на подстроки по знаку '.'
@@ -310,18 +225,14 @@ for(el=el2;el<ll;el++){  //2 цикл для второй даты
   d2=data1[0]+'.'+data1[1]+'.'+data2[0];
   d22=data2[0]+'.'+data1[1]+'.'+data1[0];
 
-
-
   //alert(d1+'+'+d2);
   //alert(d11+'++'+d22);
-
   if(d11>d22){
 //    alert(d1+'>'+d2);
 //ar[el1].after('after'); // вставить строку "after" ПОСЛЕ выбранного html элемента
 //ar[el1].before('before'); // вставить строку "before" ПЕРЕД выбранным html элементом
 ar[el1].before(ar[el]); // вставить строку "before" ПЕРЕД выбранным html элементом
 }
-
 }    //2 цикл
 }    //1 цикл
 }   //0 цикл
@@ -333,7 +244,6 @@ for(el=0;el<(ll-1);el++){  //цикл для поиска совпадений
   //поиск совпадений дат
 if(ar[el].innerHTML==ar[el+1].innerHTML){
   answer=1;
-
   // добавление элементу класс
 ar[el].classList.add("doubleremove");
 ar[el].classList.add("text-danger");
@@ -345,88 +255,159 @@ if(answer==1){
   document.getElementsByClassName('double')[0].innerHTML="Найдены совпадения!";
   // добавление элементу класс
 document.getElementsByClassName('double')[0].classList.add("text-danger");
-
 document.getElementById('iddoubleclear').classList.remove("invisible");
 document.getElementById('iddoubleclear').classList.add("visible");
-
 }
 
 
-let i=0;
-let word;
-for(el=0;el<ll;el++,i++){  //цикл для поиска совпадений
 
-word = ar[el].innerHTML.split('-', 3); //разбить строку на подстроки по знаку '-'
+//найти совмещенные даты
 
-arr[i]=word[0];
-i++;
-arr[i]=word[1];
+let ar1=document.getElementsByClassName('list-group-item');//поместить все list-group-item в массив
+let ll1=ar1.length;  //кол-во элементов с классом list-group-item
+let da1;
+let da2;
+let da11;
+let da21;
+let date1a;
+let date2a;
+var i;
+for(i=0;i<ll1;i++){
+  da1=ar1[i].innerHTML.split("-");
+  da2=ar1[i+1].innerHTML.split("-");
 
-}
+let da11=da1[1].split(".");
+let da21=da2[0].split(".");
 
-let data01,data02,data011,data022,data0111,data0222;
-for(i=1;i<(arr.length);i=i+2){
-
- data01=arr[i].split('.', 3); //разбить строку на подстроки по знаку '.'
- data02=arr[i+1].split('.', 3); //разбить строку на подстроки по знаку '.'
-data011=data01[2]+'.'+data01[1]+'.'+data01[0];
-data022=data02[2]+'.'+data02[1]+'.'+data02[0];
-data0111=new Date(data011);
-data0222=new Date(data022);
-
-  if(data0111>data0222){
-  //ar[i-1].classList.add("bg-success");
-//  ar[i].classList.add("bg-success");
-  document.getElementsByClassName('array')[0].innerHTML='Найдены совмещенные даты!';
-   document.getElementsByClassName('array')[0].classList.add("text-success");
+  date1a = new Date(da11[2],da11[1],da11[0]);
+  date2a = new Date(da21[2],da21[1],da21[0]);
+  if(date1a>date2a){
+    ar1[i].classList.add("bg-secondary");
+    ar1[i+1].classList.add("bg-secondary");
+    document.getElementsByClassName('array')[0].innerHTML='Найдены совмещенные даты!';
   }
 
+  //document.getElementsByClassName('array')[0].innerHTML='Найдены совмещенные даты!';
+   //document.getElementsByClassName('array')[0].classList.add("text-success");
 }
 
 });//конец функции
 });
 
-
-
 //  function удаление повторных записей(){
     jQuery( function( $ ){ // есть разные варианты этой строчки, но такая мне нравится больше всего, т.к. всегда работает
 $( '#iddoubleclear' ).click( function(){ // при клике на элемент с id="idajax"
 //alert( 'JQuery у меня вроде работает!!!' ); // выводим сообщение просто для проверки работает ли jquery
-
 var ar=document.getElementsByClassName('list-group-item');//поместить все list-group-item в массив
 var ll=ar.length;  //кол-во элементов с классом list-group-item
 let i;
-
 for(i=0;i<ll;i++){
-
   if(ar[i].classList.contains("doubleremove")){  //проверка наличия класса в элементе
 ar[i].remove(); //удалить элемент
  }
+if(ar[i].classList.contains("bg-secondary")){  //удалить обозначение совмещенных дат
+  ar[i].classList.remove("bg-secondary");
+}
+
+
  document.getElementById('iddoubleclear').classList.remove("visible");
  document.getElementById('iddoubleclear').classList.add("invisible");
  document.getElementsByClassName('double')[0].innerHTML="";
-
 //document.getElementsByClassName('forwarning')[0].innerHTML="рекомендуется провести повторный перерасчет!";
+}
+document.getElementsByClassName('array')[0].innerHTML='';
+});
+});
 
+jQuery( function($){
+$( '#idajax1' ).click( function(){ // при клике на элемент с id="idajax"
+  var adress1="<?php
+  echo get_template_directory_uri().'/php/calculatedifdate1.php';//URL папки шаблона WordPress, например http://test/wp-content/themes/template
+  ?>";
+
+let array1=document.getElementsByClassName('list-group-item');//поместить все list-group-item в массив
+  var lengtharray1=array1.length;  //кол-во элементов с классом list-group-item
+  var array2=[];
+let i;
+for(i=0;i<lengtharray1;i++){
+  //alert(array1[i].innerHTML);
+  array2[i]=array1[i].innerHTML;
 }
 
-document.getElementsByClassName('array')[0].innerHTML='';
+//ajax запрос
+   $.ajax({
+	url: adress1, //'/index.php',         /* Куда пойдет запрос */
+	//method: 'get',             /* Метод передачи (post или get) */
+	dataType: 'html',          /* Тип данных в ответе (xml, json, script, html). */
+	//data:'param1='+123,     /* Параметры передаваемые в запросе. */
 
-document.getElementsByClassName('forwarning')[0].innerHTML="рекомендуется провести повторный перерасчет!";
+  type: 'POST',
+  //data: {arr: arr},
+  data: {array2: array2},
+	success: function(data){   /* функция которая будет выполнена после успешного запроса.  */
+    data = data.split('-', 3); //разбить строку на подстроки по
+    document.getElementsByClassName('daysum')[0].innerHTML=data[2];            /* В переменной data содержится ответ от ajax c сервера/файла php. */
+    document.getElementsByClassName('monthsum')[0].innerHTML=data[1];            /* В переменной data содержится ответ от ajax c сервера/файла php. */
+    document.getElementsByClassName('yearsum')[0].innerHTML=data[0];
+    }
+});
+});
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+jQuery( function($){
+$( '#iddoublejoin' ).click( function(){ // при клике на элемент с id="iddoublejoin"
+
+
+let array1=document.getElementsByClassName('list-group-item');//поместить все list-group-item в массив
+let lengtharray1=array1.length;  //кол-во элементов с классом list-group-item
+let array2=[];
+let i;
+let j=0;
+let data1;
+let data2;
+for(i=0;i<lengtharray1;i++){
+  if(array1[i].classList.contains("bg-secondary")){
+
+
+    data1=array1[i].innerHTML.split('-'); //разбить строку на подстроки по знаку '.'
+    data2=array1[i+1].innerHTML.split('-'); //разбить строку на подстроки по знаку '.'
+    alert(data1[0]+'-'+data2[1]);
+
+     $(".list-group-item").eq(i).html(data1[0]+'-'+data2[1]); // содержание первого элемента меняется на data1[0]+" - "+data2[1]
+     array1[i].classList.remove("bg-secondary");
+     $(".list-group-item").eq(i+1).remove();// удалить элемент с №1
+  //  $(".list-group-item").eq(i+1).html(0); // содержание первого элемента меняется на data1[0]+" - "+data2[1]
+i++;
+//break;
+  }
+}
+
+
+
+
+
+
+
 
 });
 });
-
-
-jQuery( function( $ ){ // есть разные варианты этой строчки, но такая мне нравится больше всего, т.к. всегда работает
-$( '#idajax1' ).click( function(){ // при клике на элемент с id="idajax"
-//alert( 'JQuery у меня вроде работает!!!' ); // выводим сообщение просто для проверки работает ли jquery
-
-
-
-});
-});
-
 
 ///////////////////
           </script>
@@ -439,15 +420,16 @@ $( '#idajax1' ).click( function(){ // при клике на элемент с i
           */
                     ?>
 
-        <input type="button" class="btn btn-outline-info" value="нажать для расчета разницы между датами" id="idajax"/>
-
+        <input type="button" class="btn btn-outline-info" value="добавить период между датами" id="idajax"/>
+        <input type="button" class="btn btn-outline-info" value="рассчитать сумму разниц дат в таблице" id="idajax1"/>
 
         <input type="button" class="btn btn-outline-info" value="сбросить" id="idclear"/>
 
           <input type="button" class="btn btn-outline-info" value="проверить введеные даты" id="idsort"/>
 
             <input type="button" class="btn btn-outline-info text-danger invisible" value="удалить повторяющиеся записи/даты" id="iddoubleclear"/>
-  <input type="button" class="btn btn-outline-info" value="нажать для перерасчета разницы между датами" id="idajax1"/>
+            <input type="button" class="btn btn-outline-info text-danger" value="объединить совмещенные даты" id="iddoublejoin"/>
+
             <!-- Конец своего кода -->
           <?php endwhile; ?>
         </div>
