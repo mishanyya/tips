@@ -168,22 +168,6 @@ $(".list-group").append("<li class='list-group-item'>"+x+" - "+y+"</li>" );
   });
 
 
-  jQuery( function( $ ){ // сбросить
-$( '#idclear' ).click( function(){ // при клике на элемент с id="idclear"
-
-document.getElementsByClassName('day1')[0].value='';
-document.getElementsByClassName('day2')[0].value='';
-document.getElementsByClassName('daysum')[0].innerHTML='';            /* В переменной data содержится ответ от ajax c сервера/файла php. */
-document.getElementsByClassName('monthsum')[0].innerHTML='';            /* В переменной data содержится ответ от ajax c сервера/файла php. */
-document.getElementsByClassName('yearsum')[0].innerHTML='';
-document.getElementsByClassName('dday')[0].innerHTML='';            /* В переменной data содержится ответ от ajax c сервера/файла php. */
-document.getElementsByClassName('mmonth')[0].innerHTML='';            /* В переменной data содержится ответ от ajax c сервера/файла php. */
-document.getElementsByClassName('yyear')[0].innerHTML='';
-document.getElementsByClassName('array')[0].innerHTML='';
-$('.list-group').empty();//удалить все элементы внутри класса list-group
-});
-});
-
 jQuery( function($){ //рассчитать сумму разниц дат в таблице
 $( '#idajax1' ).click( function(){ // при клике на элемент с id="idajax1"
   let adress1="<?php
@@ -215,8 +199,6 @@ for(i=0;i<lengtharray1;i++){
 });
 });
 });
-
-/////////////////////////////////////////////////
 
     jQuery(function($){ // проверить список с датами
 $( '#idsort' ).click( function(){ // при клике на элемент с id="idsort"
@@ -271,8 +253,6 @@ ar[el].classList.add("text-danger");
 if(answer==1){
 document.getElementsByClassName('double')[0].innerHTML="Найдены совпадения!";
 document.getElementsByClassName('double')[0].classList.add("text-danger");
-document.getElementById('iddoubleclear').classList.remove("invisible");
-document.getElementById('iddoubleclear').classList.add("visible");
 }
 
 //поиск совмещенных дат
@@ -301,8 +281,6 @@ let da21=da2[0].split(".");
 if(answer1==1){
   document.getElementsByClassName('array')[0].innerHTML='Найдены совмещенные даты!';
   document.getElementsByClassName('array')[0].classList.add("bg-warning");
-  document.getElementById('iddoublejoin').classList.remove("invisible");
-  document.getElementById('iddoublejoin').classList.add("visible");
 }
 }
 });//конец функции
@@ -321,11 +299,7 @@ ar[i].remove(); //удалить элемент
 if(ar[i].classList.contains("bg-warning")){  //удалить обозначение совмещенных дат
   ar[i].classList.remove("bg-warning");
 }
- document.getElementById('iddoubleclear').classList.remove("visible");
- document.getElementById('iddoubleclear').classList.add("invisible");
- document.getElementById('iddoublejoin').classList.remove("visible");
- document.getElementById('iddoublejoin').classList.add("invisible");
- document.getElementsByClassName('double')[0].innerHTML="";
+  document.getElementsByClassName('double')[0].innerHTML="";
  document.getElementsByClassName('array')[0].innerHTML='';
 }
 });
@@ -335,7 +309,7 @@ if(ar[i].classList.contains("bg-warning")){  //удалить обозначен
 jQuery( function($){ //объединить совмещенные даты
 $( '#iddoublejoin' ).click( function(){ // при клике на элемент с id="iddoublejoin"
 
-let array1=document.getElementsByClassName('list-group-item');//поместить все list-group-item в массив
+let array1=document.getElementsByClassName('list-group-item');//поместить все list-group-item с классом 'bg-warning' в массив
 let lengtharray1=array1.length;  //кол-во элементов с классом list-group-item
 let array2=[];
 let i;
@@ -343,36 +317,146 @@ let j=0;
 let data1;
 let data2;
 let answer2=0;
+let answer3=0;
+/*
 for(i=0;i<lengtharray1;i++){
   if(array1[i].classList.contains("bg-warning")){
     data1=array1[i].innerHTML.split('-'); //разбить строку на подстроки по знаку '.'
     data2=array1[i+1].innerHTML.split('-'); //разбить строку на подстроки по знаку '.'
-  //  alert(data1[0]+'-'+data2[1]);
      $(".list-group-item").eq(i).html(data1[0]+'-'+data2[1]); // содержание первого элемента меняется на data1[0]+" - "+data2[1]
-     array1[i].classList.remove("bg-warning");
-     $(".list-group-item").eq(i+1).remove();// удалить элемент с №1
-  //  $(".list-group-item").eq(i+1).html(0); // содержание первого элемента меняется на data1[0]+" - "+data2[1]
+
+  array1[i].classList.remove("bg-warning");
+$(".list-group-item").eq(i+1).remove();// удалить элемент с №1
 i++;
 answer2=1;
   }
   if(answer2==1){
-    document.getElementById('iddoublejoin').classList.remove("visible");
-    document.getElementById('iddoublejoin').classList.add("invisible");
     document.getElementsByClassName('array')[0].remove("bg-warning");
     document.getElementsByClassName('array')[0].innerHTML='';
   }
 }
+*/
+///////////
+
+
+let ifirst; //номер первого элемента
+let isecond; //номер второго и следующего элементов
+let ithird; //номер элемента, для следующего цикла
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+for(j=0;j<lengtharray1;j++){
+
+  for(i=0;i<lengtharray1;i++){//получить номер первого элемента с совпадающей датой
+    if(array1[i].classList.contains("bg-warning")){
+      ifirst=i;
+  answer2=1;
+  break;
+    }
+  }
+
+  for(i=ifirst;i<lengtharray1;i++){//получить номер первого элемента с совпадающей датой
+    if(array1[i].classList.contains("bg-warning")==false){
+      ithird=i;
+    break;
+    }
+  }
+
+
+
+
+
+
+  for(i=ifirst;i<lengtharray1;i++){//получить номер первого элемента с совпадающей датой
+    if(array1[i].classList.contains("bg-warning")==false){
+      ithird=i;
+    break;
+    }
+  }
+
+
+
+data1=array1[ifirst].innerHTML.split('-'); //разбить строку на подстроки по знаку '-'
+
+for(isecond=ifirst+1;isecond<lengtharray1;isecond++){//начать перебор с элемента ifirst
+  if(array1[isecond].classList.contains("bg-warning")){
+data2=array1[isecond].innerHTML.split('-'); //разбить строку на подстроки по знаку '-'
+$(".list-group-item").eq(ifirst).html(data1[0]+'-'+data2[1]); // содержание первого элемента меняется на data1[0]+" - "+data2[1]
+  array1[ifirst].classList.remove("bg-warning");
+  $(".list-group-item").eq(isecond).remove();// удалить элемент с №1
+
+  break;
+}
+  }
+
+  ifirst=ithird;
+
+}
+
+
+  ////////////////////////////////////////////////////////////////
+
+if(answer2==1){
+  document.getElementsByClassName('array')[0].innerHTML='';
+}
+/*
+for(k=0;k<lengtharray1;k++){
+  if(array1[k].classList.contains("bg-warning")){
+    answer3=1;
+  }
+}
+
+if(answer3==1){
+  alert('Проверьте список еще раз - возможны совмещающиеся даты');
+}*/
+
+
 
 });
 });
+
+jQuery( function($){ // сбросить
+$( '#idclear' ).click( function(){ // при клике на элемент с id="idclear"
+
+document.getElementsByClassName('day1')[0].value='';
+document.getElementsByClassName('day2')[0].value='';
+document.getElementsByClassName('daysum')[0].innerHTML='';            /* В переменной data содержится ответ от ajax c сервера/файла php. */
+document.getElementsByClassName('monthsum')[0].innerHTML='';            /* В переменной data содержится ответ от ajax c сервера/файла php. */
+document.getElementsByClassName('yearsum')[0].innerHTML='';
+document.getElementsByClassName('dday')[0].innerHTML='';            /* В переменной data содержится ответ от ajax c сервера/файла php. */
+document.getElementsByClassName('mmonth')[0].innerHTML='';            /* В переменной data содержится ответ от ajax c сервера/файла php. */
+document.getElementsByClassName('yyear')[0].innerHTML='';
+document.getElementsByClassName('array')[0].innerHTML='';
+
+//let elements = document.querySelectorAll(".list-group-item");
+//alert(elements.length);
+
+$('.list-group').empty();//удалить все элементы внутри класса list-group
+
+
+//let elements = document.getElementsByClassName("liforremove");
+//alert(elements.length);
+
+
+});
+});
+
+///////////////
+
+/////////////
           </script>
 
         <input type="button" class="btn btn-outline-info" value="добавить даты" id="idajax"/>
         <input type="button" class="btn btn-outline-info" value="проверить список на повторы" id="idsort"/>
         <input type="button" class="btn btn-outline-info" value="рассчитать сумму разниц дат в таблице" id="idajax1"/>
         <input type="button" class="btn btn-outline-info" value="сбросить" id="idclear"/>
-        <input type="button" class="btn btn-outline-info text-danger invisible" value="удалить повторяющиеся записи/даты" id="iddoubleclear"/>
-        <input type="button" class="btn btn-outline-info bg-warning invisible" value="объединить совмещенные даты" id="iddoublejoin"/>
+        <input type="button" class="btn btn-outline-info text-danger" value="удалить повторяющиеся записи/даты" id="iddoubleclear"/>
+        <input type="button" class="btn btn-outline-info bg-warning" value="объединить совмещенные даты" id="iddoublejoin"/>
 
             <!-- Конец своего кода -->
           <?php endwhile; ?>
