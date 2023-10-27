@@ -244,9 +244,9 @@ for(el=0;el<(ll-1);el++){
   //поиск совпадений дат
 if(ar[el].innerHTML==ar[el+1].innerHTML){
   answer=1;
-  // добавление элементу класс для удаления
-ar[el].classList.add("doubleremove");
-ar[el].classList.add("text-danger");
+  // добавление элементу класса для удаления
+ar[el+1].classList.add("doubleremove");
+ar[el+1].classList.add("text-danger");
 }
 //поиск совмащенных дат
 }//конец цикла
@@ -282,6 +282,7 @@ if(answer1==1){
   document.getElementsByClassName('array')[0].innerHTML='Найдены совмещенные даты!';
   document.getElementsByClassName('array')[0].classList.add("bg-warning");
 }
+
 }
 });//конец функции
 });
@@ -318,38 +319,11 @@ let data1;
 let data2;
 let answer2=0;
 let answer3=0;
-/*
-for(i=0;i<lengtharray1;i++){
-  if(array1[i].classList.contains("bg-warning")){
-    data1=array1[i].innerHTML.split('-'); //разбить строку на подстроки по знаку '.'
-    data2=array1[i+1].innerHTML.split('-'); //разбить строку на подстроки по знаку '.'
-     $(".list-group-item").eq(i).html(data1[0]+'-'+data2[1]); // содержание первого элемента меняется на data1[0]+" - "+data2[1]
-
-  array1[i].classList.remove("bg-warning");
-$(".list-group-item").eq(i+1).remove();// удалить элемент с №1
-i++;
-answer2=1;
-  }
-  if(answer2==1){
-    document.getElementsByClassName('array')[0].remove("bg-warning");
-    document.getElementsByClassName('array')[0].innerHTML='';
-  }
-}
-*/
-///////////
-
 
 let ifirst; //номер первого элемента
 let isecond; //номер второго и следующего элементов
 let ithird; //номер элемента, для следующего цикла
 
-
-
-
-
-
-
-///////////////////////////////////////////////////////////////////////////////////////////
 for(j=0;j<lengtharray1;j++){
 
   for(i=0;i<lengtharray1;i++){//получить номер первого элемента с совпадающей датой
@@ -368,17 +342,12 @@ for(j=0;j<lengtharray1;j++){
   }
 
 
-
-
-
-
   for(i=ifirst;i<lengtharray1;i++){//получить номер первого элемента с совпадающей датой
     if(array1[i].classList.contains("bg-warning")==false){
       ithird=i;
     break;
     }
   }
-
 
 
 data1=array1[ifirst].innerHTML.split('-'); //разбить строку на подстроки по знаку '-'
@@ -389,22 +358,14 @@ data2=array1[isecond].innerHTML.split('-'); //разбить строку на �
 $(".list-group-item").eq(ifirst).html(data1[0]+'-'+data2[1]); // содержание первого элемента меняется на data1[0]+" - "+data2[1]
   array1[ifirst].classList.remove("bg-warning");
   $(".list-group-item").eq(isecond).remove();// удалить элемент с №1
-
   break;
 }
   }
-
   ifirst=ithird;
-
 }
 
 
-  ////////////////////////////////////////////////////////////////
 
-if(answer2==1){
-  document.getElementsByClassName('array')[0].innerHTML='';
-}
-/*
 for(k=0;k<lengtharray1;k++){
   if(array1[k].classList.contains("bg-warning")){
     answer3=1;
@@ -413,7 +374,11 @@ for(k=0;k<lengtharray1;k++){
 
 if(answer3==1){
   alert('Проверьте список еще раз - возможны совмещающиеся даты');
-}*/
+}
+else {
+  document.getElementsByClassName('array')[0].innerHTML='';
+    document.getElementsByClassName('array')[0].classList.remove("bg-warning");
+}
 
 
 
