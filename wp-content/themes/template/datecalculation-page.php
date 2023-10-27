@@ -318,7 +318,7 @@ let j=0;
 let data1;
 let data2;
 let answer2=0;
-let answer3=0;
+let answer3;
 
 let ifirst; //номер первого элемента
 let isecond; //номер второго и следующего элементов
@@ -362,23 +362,13 @@ $(".list-group-item").eq(ifirst).html(data1[0]+'-'+data2[1]); // содержа�
 }
   }
   ifirst=ithird;
-}
 
 
-
-for(k=0;k<lengtharray1;k++){
-  if(array1[k].classList.contains("bg-warning")){
-    answer3=1;
-  }
-}
-
-if(answer3==1){
-  alert('Проверьте список еще раз - возможны совмещающиеся даты');
-}
-else {
   document.getElementsByClassName('array')[0].innerHTML='';
     document.getElementsByClassName('array')[0].classList.remove("bg-warning");
 }
+
+
 
 
 
