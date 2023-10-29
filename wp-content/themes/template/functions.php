@@ -168,15 +168,23 @@ add_action('wp_enqueue_scripts', 'load_bootstrap');
 
 function load_local_jquery(){//подключение общих файлов скриптов JS и стилей CSS
 
+//библиотеки для bootstrap
+wp_enqueue_script('classes-jsjquery2',"https://code.jquery.com/jquery-3.2.1.slim.min.js");//подключение файлов JS к WP
+wp_enqueue_script('classes-jsjquery3',"https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js");//подключение файлов JS к WP
+wp_enqueue_script('classes-jsjquery4',"https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js");//подключение файлов JS к WP
+
 //Это подключение JQuery!  и оно работает!
 //а если закомментировать, то не будет!))
 wp_enqueue_script('jquery-js', get_template_directory_uri().'/js/jquery.min.js');//подключение JQuery библиотеки для JS
 
-wp_enqueue_style('styleJquery', '//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css');//подключение стилей CSS
+wp_enqueue_style('styleJquery', 'https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css');//подключение стилей CSS
 wp_enqueue_script('classes-jsjquery',"https://code.jquery.com/jquery-1.12.4.js");//подключение файлов JS к WP
 wp_enqueue_script('classes-jsjquery1',"https://code.jquery.com/ui/1.12.1/jquery-ui.js");//подключение файлов JS к WP
 }
 add_action('wp_enqueue_scripts', 'load_local_jquery');
+
+
+
 
 
 
