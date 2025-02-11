@@ -59,7 +59,11 @@ get_header(); ?>
 
 
           <div class="input-group mb-2">
-            <div class="Payment  alert alert-success" role="alert">Здесь будет результат расчета<!-- вывод сообщения --></div>
+            <div class="Payment  alert alert-success" role="alert">Здесь будет размер ежемесячного платежа<!-- вывод сообщения --></div>
+            </div>
+
+          <div class="input-group mb-2">
+            <div class="Overpayment  alert alert-info" role="alert">Здесь будет общий размер переплаты по кредиту<!-- вывод сообщения --></div>
           </div>
 
           <script>
@@ -88,7 +92,7 @@ get_header(); ?>
           else {
             paymenttermayear=Number(paymenttermayear);
             paymentterm=Number(paymentterm);
-            paymentterm=(paymenttermayear*12)+paymentterm;
+            paymentterm=(paymenttermayear*12)+paymentterm;//срок кредита в месяцах
             interestrateamonth=interestrate/1200;//% делятся на 100 и на 12 месяцев
             koeff=(interestrateamonth*Math.pow((1+interestrateamonth),paymentterm))/(Math.pow((1+interestrateamonth),paymentterm)-1);
             payment=koeff*debt;//платеж в месяц
@@ -97,6 +101,7 @@ get_header(); ?>
             payment="Расчет не удался из-за некорректных данных";
           }
           document.getElementsByClassName('Payment')[0].textContent=payment;
+          document.getElementsByClassName('Overpayment')[0].textContent=payment*paymentterm-debt;
           }
           </script>
           <input type="button" class="btn btn-outline-info" value="нажать для расчета платежа по кредиту" onclick="payment()"/>
@@ -191,9 +196,20 @@ get_header(); ?>
     <input type='text' placeholder="" class='PaymentTerm1 form-control' inputmode='numeric'>
   </div>
 
+
   <div class="input-group mb-2">
-  <div class="Payment1  alert alert-success" role="alert">Здесь будет результат расчета<!-- вывод сообщения --></div>
+    <div class="Payment1  alert alert-success" role="alert">Здесь будет размер ежемесячного платежа<!-- вывод сообщения --></div>
+    </div>
+
+  <div class="input-group mb-2">
+    <div class="Overpayment1  alert alert-info" role="alert">Здесь будет общий размер переплаты по кредиту<!-- вывод сообщения --></div>
   </div>
+
+
+
+
+
+
 
   <script>
   function payment1(){
@@ -230,6 +246,8 @@ get_header(); ?>
   payment="Расчет не удался из-за некорректных данных";
   }
   document.getElementsByClassName('Payment1')[0].textContent=payment;
+
+  document.getElementsByClassName('Overpayment1')[0].textContent=payment*paymentterm-debt;
   }
   </script>
   <input type="button" class="btn btn-outline-info" value="нажать для расчета платежа по кредиту" onclick="payment1()"/>
