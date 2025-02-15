@@ -66,6 +66,10 @@ get_header(); ?>
             <div class="Overpayment  alert alert-info" role="alert">Здесь будет общий размер переплаты по кредиту<!-- вывод сообщения --></div>
           </div>
 
+          <div class="input-group mb-2">
+            <div class="Allpayment  alert alert-warning" role="alert">Здесь будет стоимость кредита в процентах<!-- вывод сообщения --></div>
+          </div>
+
           <script>
 
           function payment(){
@@ -100,8 +104,10 @@ get_header(); ?>
           if(payment===Infinity){
             payment="Расчет не удался из-за некорректных данных";
           }
-          document.getElementsByClassName('Payment')[0].textContent=payment;
-          document.getElementsByClassName('Overpayment')[0].textContent=payment*paymentterm-debt;
+          document.getElementsByClassName('Payment')[0].textContent='Ежемесячный платеж: '+payment;
+          document.getElementsByClassName('Overpayment')[0].textContent='Переплата по кредиту: '+(payment*paymentterm-debt);
+          document.getElementsByClassName('Allpayment')[0].textContent='Переплата в процентах: '+(payment*paymentterm-debt)*100/debt+' %';
+
           }
           </script>
           <input type="button" class="btn btn-outline-info" value="нажать для расчета платежа по кредиту" onclick="payment()"/>
@@ -205,7 +211,9 @@ get_header(); ?>
     <div class="Overpayment1  alert alert-info" role="alert">Здесь будет общий размер переплаты по кредиту<!-- вывод сообщения --></div>
   </div>
 
-
+  <div class="input-group mb-2">
+    <div class="Allpayment1  alert alert-warning" role="alert">Здесь будет стоимость кредита в процентах<!-- вывод сообщения --></div>
+  </div>
 
 
 
@@ -245,9 +253,11 @@ get_header(); ?>
   if(payment===Infinity){
   payment="Расчет не удался из-за некорректных данных";
   }
-  document.getElementsByClassName('Payment1')[0].textContent=payment;
+  document.getElementsByClassName('Payment1')[0].textContent='Ежемесячный платеж: '+payment;
+  document.getElementsByClassName('Overpayment1')[0].textContent='Переплата по кредиту: '+(payment*paymentterm-debt);
+  document.getElementsByClassName('Allpayment1')[0].textContent='Переплата в процентах: '+(payment*paymentterm-debt)*100/debt+' %';
 
-  document.getElementsByClassName('Overpayment1')[0].textContent=payment*paymentterm-debt;
+
   }
   </script>
   <input type="button" class="btn btn-outline-info" value="нажать для расчета платежа по кредиту" onclick="payment1()"/>
