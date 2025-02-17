@@ -28,8 +28,8 @@ get_header(); ?>
           ?>
 <!-- Сюда можно включить свой код -->
 <script>
-function factorial1(){
-let max=document.getElementsByClassName('forOutputData')[0].value;
+function factorial(i){
+let max=document.getElementsByClassName('forInputData')[i].value;
 let answer=1;//начальное значение факториала
 let x;//промежуточная величина для расчета факториала
 max=Number(max);
@@ -49,7 +49,7 @@ else {
   answer="Факториал числа "+max+" равен "+answer;
 }
 }
-document.getElementsByClassName('forOutputData')[1].textContent=answer;
+document.getElementsByClassName('forOutputData')[i].textContent=answer;
 }
 </script>
 <h3>Расчет факториала для целого положительного числа</h3>
@@ -57,14 +57,14 @@ document.getElementsByClassName('forOutputData')[1].textContent=answer;
   <div class="input-group-prepend">
       <span class="input-group-text">Целое положительное начальное значение</span>
     </div>
-    <input type='text' placeholder="" class='forOutputData form-control'>
+    <input type='text' placeholder="" class='forInputData form-control'>
 </div>
 
 <div class="input-group mb-2">
   <div class="forOutputData  alert alert-success" role="alert">Здесь будет результат расчета<!-- вывод сообщения --></div>
 </div>
 
-<input type="button" class="btn btn-outline-info" value="нажать для расчета факториала" onclick="factorial1()"/>
+<input type="button" class="btn btn-outline-info" value="нажать для расчета факториала" onclick="factorial(0)"/>
 
 
   <!-- Конец своего кода -->
@@ -110,7 +110,7 @@ include "menustyleforcalculatepagessidebar.php";
            <?php
            //меню для сайдбара страниц-калькуляторов
            include "menustyleforcalculatepagessidebar.php";
-           ?>   
+           ?>
          </div>
        </div>
   </div>
@@ -145,41 +145,15 @@ include "menustyleforcalculatepagessidebar.php";
       <div class="input-group-prepend">
           <span class="input-group-text">Целое положительное начальное значение</span>
         </div>
-        <input type='text' placeholder="" class='forOutputDataForSmallScreen form-control'  inputmode='numeric'>
+        <input type='text' placeholder="" class='forInputData form-control'  inputmode='numeric'>
     </div>
 
     <div class="input-group mb-2">
-      <div class="forOutputDataForSmallScreen  alert alert-success" role="alert">Здесь будет результат расчета<!-- вывод сообщения --></div>
+      <div class="forOutputData alert alert-success" role="alert">Здесь будет результат расчета<!-- вывод сообщения --></div>
     </div>
 
 
-    <script>
-    function factorialforsmallscreen(){
-    let max=document.getElementsByClassName('forOutputDataForSmallScreen')[0].value;
-    let answer=1;//начальное значение факториала
-    let x;//промежуточная величина для расчета факториала
-    max=Number(max);
-    for(x=1;x<=max;x++){
-    answer=answer*x;
-    }
-    let RegExp=/^[\d]+$/;//проверка на только цифры с начала и до конца
-
-    if((RegExp.test(max)==false)|(max<0)){
-      answer="Введено некорректное значение";
-    }
-    else {
-      if ((answer <= Number.MIN_VALUE)|(answer >= Number.MAX_VALUE)) {
-        answer="К сожалению, расчет с таким значением невозможен!";
-      }
-    else {
-      answer="Факториал числа "+max+" равен "+answer;
-    }
-    }
-    document.getElementsByClassName('forOutputDataForSmallScreen')[1].textContent=answer;
-    }
-    </script>
-
-  <input type="button" class="btn btn-outline-info" value="нажать для расчета факториала" onclick="factorialforsmallscreen()"/>
+  <input type="button" class="btn btn-outline-info" value="нажать для расчета факториала" onclick="factorial(1)"/>
 
     </div>
 </div>
