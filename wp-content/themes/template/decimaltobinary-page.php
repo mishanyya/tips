@@ -31,98 +31,7 @@ get_header(); ?>
 //функция добавить нули к массиву
 
 
-function divide(){
-var original=document.getElementById('value10').value;
-let RegExp=/^[\-]?[\d]+$/;//проверка на только цифры с начала и до конца
 
-if(RegExp.test(original)==false){//если не число
-document.getElementById('value11').innerHTML="Введено некорректное значение";
-}
-else{
-
-var sign;//знак вводимого числа
-if(original<0){//если число отрицательное
-  sign=1;
-  original = original.substr(1);//убираем символ знака числа
-}
-  else {//если число положительное или равно 0
-    sign=0;
-}
-
-var answer=[];     // массив для помещения в него перевернутого ответа
-
-var q=0;
-do{
-//получить остаток от деления
-var ostatok=original%2;
-answer[q]=ostatok;             //добавить остаток в переменную вывода
-q++; //увеличить номер элемента массива
-
-original/=2;                 //разделить исходное значение на 2 и сделать ответ исходным значением
-var qwerty=original;         //целый или дробный результат поместить в переменную
-original=Math.floor(qwerty);       //округляем до меньшего целого значения
-}while(original!=0)
-
-
-let len=answer.length;
-let addzero;
-if(len<=8){
-  addzero=8-len;
-}
-else if (len>8&&len<=16) {
-  addzero=16-len;
-}
-else if (len>16&&len<=32) {
-  addzero=32-len;
-}
-else if (len>32) {
-  addzero=64-len;
-}
-
-for(let i=1;i<=addzero;i++){//добавить символы 0 в массив
-  answer.push("0");
-  }
-
-  //замена нулей на единицы и наоборот для отрицательных значений
-  if(sign==1){
-    for(let i=0;i<answer.length;i++){
-
-      if(answer[i]==1){
-        answer[i]=0;
-      }
-      else if(answer[i]==0){
-        answer[i]=1;
-      }
-      }
-      //увеличение на 1
-      var b=1;
-      var j=0;
-do{
-  answer[j]+=b;
-  //alert(answer[j]);
-   if(answer[j]==2){
-      b=1;
-      answer[j]=0;
-      j++;
-    }
-    else {
-      b=0;
-    }
-}while(b==1);
-  }
-
-let rev=''; //строка, в который добавляются символы
-
-let aa=answer.length; //номер последнего символа в обрабатываемой строке/переменной
-aa--;
-
-//вывод элементов массива
-for(xx=aa;xx>=0;xx--){
-rev+=answer[xx];
-}
-document.getElementById('value11').innerHTML=rev;
-}
-}
 </script>
 
 <h3>Калькулятор перевода положительного числа в двоичную форму</h3>
@@ -130,14 +39,14 @@ document.getElementById('value11').innerHTML=rev;
            <div class="input-group-prepend">
                <span class="input-group-text">Десятичное обычное число</span>
              </div>
-             <input type="text" placeholder="" id="value10" class="Debt form-control">
+             <input type="text" placeholder="" class="valueDecimal form-control">
 </div>
 
 <div class="input-group mb-2">
-  <div  id="value11" class="forOutputData  alert alert-success" role="alert">Здесь будет результат расчета<!-- вывод сообщения --></div>
+  <div  class="forResult  alert alert-success" role="alert">Здесь будет результат расчета<!-- вывод сообщения --></div>
 </div>
 
-<input type="button" class="btn btn-outline-info" value="нажать для перевода в двоичную форму" onclick="divide()"/>
+<input type="button" class="btn btn-outline-info" value="нажать для перевода в двоичную форму" onclick="divide(0)"/>
 
   <!-- Конец своего кода -->
 <?php endwhile; ?>
@@ -212,65 +121,20 @@ include "menustyleforcalculatepagessidebar.php";
 
 
 
+
   <h3>Калькулятор перевода числа в двоичную форму</h3>
     <div class="input-group mb-2">
       <div class="input-group-prepend">
           <span class="input-group-text">Десятичное обычное число</span>
         </div>
-        <input type='text' placeholder="" id="value10s" class='forOutputDataForSmallScreen form-control'  inputmode='numeric'>
+        <input type='text' placeholder="" class='valueDecimal form-control'  inputmode='numeric'>
     </div>
 
     <div class="input-group mb-2">
-      <div  id="value11s" class="forOutputDataForSmallScreen  alert alert-success" role="alert">Здесь будет результат расчета<!-- вывод сообщения --></div>
+      <div  class="forResult alert alert-success" role="alert">Здесь будет результат расчета<!-- вывод сообщения --></div>
     </div>
 
-    <script>
-    function divideforsmallscreen(){
-    var original=document.getElementById('value10s').value;
-
-    let RegExp=/^[\-]?[\d]+$/;//проверка на только цифры с начала и до конца
-
-    if(RegExp.test(original)==false){//если не число
-    document.getElementById('value11s').innerHTML="Введено некорректное значение";
-    }
-    else if(original<0){//если число отрицательное
-      document.getElementById('value11s').innerHTML="Введено отрицательное число!";
-    }
-    else {
-    var answer='';     // ='' показывает, что переменная - просто строка, а не число!
-
-    do{
-    var ostatok=original%2;      //получить остаток от деления
-    answer+=ostatok;             //добавить остаток в переменную вывода
-    original/=2;                 //разделить исходное значение на 2 и сделать ответ исходным значением
-    var qwerty=original;         //целый или дробный результат поместить в переменную
-    original=Math.floor(qwerty)       //округляем до меньшего целого значения
-    }while(original!=0)
-    //document.getElementById('value11').innerHTML=answer;
-
-
-
-
-    //переворот:
-    let rev=''; //строка, в который добавляются символы
-    let arr=[];              //создание массива для перевернутого значения
-
-    let x=answer.length; //номер последнего символа в обрабатываемой строке/переменной
-    x--;
-    let y=0;
-
-    for(x;x>=0;x--){
-    arr[y]=answer[x];
-    y++;
-    rev+=answer[x];
-    }
-
-    document.getElementById('value11s').innerHTML=rev;
-    }}
-    </script>
-
-
-  <input type="button" class="btn btn-outline-info" value="нажать для перевода в двоичную форму" onclick="divideforsmallscreen()"/>
+  <input type="button" class="btn btn-outline-info" value="нажать для перевода в двоичную форму" onclick="divide(1)"/>
 
     </div>
 </div>
