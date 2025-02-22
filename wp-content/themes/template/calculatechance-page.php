@@ -28,49 +28,28 @@ get_header(); ?>
           ?>
 <!-- Сюда можно включить свой код -->
 
-<script>
 
-// Создание объектов класса с параметрами для конструктора
-var game = new Game();
-function gameplay(){
-  let a=document.getElementsByClassName('forOutputData')[0].value;
-  let b=document.getElementsByClassName('forOutputData')[1].value;
-  document.getElementsByClassName('forOutputData')[2].textContent=game.oneChance(a,b);
-  //game.oneChance(a,b);
-}
 
-// Создание объектов класса с параметрами для конструктора
-var game1 = new Game();
-function gameplay1(){
- let a=document.getElementsByClassName('forOutputData')[3].value;
-  let b=document.getElementsByClassName('forOutputData')[4].value;
-  let a1=document.getElementsByClassName('forOutputData')[5].value;
-  let b1=document.getElementsByClassName('forOutputData')[6].value;
-  document.getElementsByClassName('forOutputData')[7].textContent=game1.doubleChance(a,b,a1,b1);
-}
-</script>
-
-<h3>Расчет шанса выбора требуемой комбинации в одном объекте</h3>
+<h3>Расчет шанса выбора вариантов в одном поле</h3>
 <div class="input-group mb-2">
   <div class="input-group-prepend">
       <span class="input-group-text">Количество выбираемых объектов</span>
     </div>
-    <input type='text' placeholder="" class='forOutputData form-control'>
+    <input type='text' placeholder="" class='forSingleDataAmount form-control'>
 </div>
 
 <div class="input-group mb-2">
   <div class="input-group-prepend">
     <span class="input-group-text">Общее количество объектов</span>
   </div>
-  <input type='text' placeholder="" class='forOutputData form-control'>
+  <input type='text' placeholder="" class='forSingleDataAllAmount form-control'>
 </div>
 
 <div class="input-group mb-2">
-  <div class="forOutputData  alert alert-success" role="alert">Здесь будет результат расчета<!-- вывод сообщения --></div>
+  <div class="forSingleDataResult alert alert-success" role="alert">Здесь будет результат расчета<!-- вывод сообщения --></div>
 </div>
 
-<input type="button" class="btn btn-outline-info" value="нажать для расчета шанса" onclick="gameplay()"/>
-
+<input type="button" class="btn btn-outline-info" value="нажать для расчета шанса" onclick="factorial_function(0)"/>
 <hr/>
 <h3>Расчет шанса выбора требуемых комбинаций в двух объектах</h3>
 <label>Поле 1</label>
@@ -79,14 +58,14 @@ function gameplay1(){
   <div class="input-group-prepend">
       <span class="input-group-text">Количество выбираемых объектов в поле 1</span>
     </div>
-    <input type='text' placeholder="" class='forOutputData form-control'>
+    <input type='text' placeholder="" class='forDoubleDataAmount form-control'>
 </div>
 
 <div class="input-group mb-2">
   <div class="input-group-prepend">
     <span class="input-group-text">Общее количество объектов в поле 1</span>
   </div>
-  <input type='text' placeholder="" class='forOutputData form-control'>
+  <input type='text' placeholder="" class='forDoubleDataAllAmount form-control'>
 </div>
 
 <label>Поле 2</label>
@@ -95,20 +74,20 @@ function gameplay1(){
   <div class="input-group-prepend">
       <span class="input-group-text">Количество выбираемых объектов в поле 2</span>
     </div>
-    <input type='text' placeholder="" class='forOutputData form-control'>
+    <input type='text' placeholder="" class='forDoubleDataAmount form-control'>
 </div>
 
 <div class="input-group mb-2">
   <div class="input-group-prepend">
     <span class="input-group-text">Общее количество объектов в поле 2</span>
   </div>
-  <input type='text' placeholder="" class='forOutputData form-control'>
+  <input type='text' placeholder="" class='forDoubleDataAllAmount form-control'>
 </div>
 
 <div class="input-group mb-2">
-  <div class="forOutputData  alert alert-success" role="alert">Здесь будет результат расчета<!-- вывод сообщения --></div>
+  <div class="forDoubleDataResult alert alert-success" role="alert">Здесь будет результат расчета<!-- вывод сообщения --></div>
 </div>
-<input type="button" class="btn btn-outline-info" value="нажать для расчета шанса" onclick="gameplay1()"/>
+<input type="button" class="btn btn-outline-info" value="нажать для расчета шанса" onclick="factorial_function_double_all(0)"/>
 
 <!-- Конец своего кода -->
 <?php endwhile; ?>
@@ -173,41 +152,21 @@ include "menustyleforcalculatepagessidebar.php";
   <div class="input-group-prepend">
       <span class="input-group-text">Количество выбираемых объектов</span>
     </div>
-    <input type='text' placeholder="" class='forDataForSmallScreen form-control' inputmode='numeric'>
+    <input type='text' placeholder="" class='forSingleDataAmount form-control' inputmode='numeric'>
 </div>
 
 <div class="input-group mb-2">
   <div class="input-group-prepend">
     <span class="input-group-text">Общее количество объектов</span>
   </div>
-  <input type='text' placeholder="" class='forDataForSmallScreen form-control' inputmode='numeric'>
+  <input type='text' placeholder="" class='forSingleDataAllAmount form-control' inputmode='numeric'>
 </div>
 
 <div class="input-group mb-2">
-  <div class="forDataForSmallScreen  alert alert-success" role="alert">Здесь будет результат расчета<!-- вывод сообщения --></div>
+  <div class="forSingleDataResult  alert alert-success" role="alert">Здесь будет результат расчета<!-- вывод сообщения --></div>
 </div>
-          <script>
-          // Создание объектов класса с параметрами для конструктора
-          var game = new Game();
-          function gameplayforsmallscreen(){
-            let a=document.getElementsByClassName('forDataForSmallScreen')[0].value;
-            let b=document.getElementsByClassName('forDataForSmallScreen')[1].value;
-            document.getElementsByClassName('forDataForSmallScreen')[2].textContent=game.oneChance(a,b);
-            //game.oneChance(a,b);
-          }
 
-          // Создание объектов класса с параметрами для конструктора
-          var game1 = new Game();
-          function gameplayforsmallscreen1(){
-           let a=document.getElementsByClassName('forDataForSmallScreen')[3].value;
-            let b=document.getElementsByClassName('forDataForSmallScreen')[4].value;
-            let a1=document.getElementsByClassName('forDataForSmallScreen')[5].value;
-            let b1=document.getElementsByClassName('forDataForSmallScreen')[6].value;
-            document.getElementsByClassName('forDataForSmallScreen')[7].textContent=game1.doubleChance(a,b,a1,b1);
-          //  game1.doubleChance(a,b,a1,b1);
-          }</script>
-
-    <input type="button" class="btn btn-outline-info" value="нажать для расчета шанса" onclick="gameplayforsmallscreen()"/>
+    <input type="button" class="btn btn-outline-info" value="нажать для расчета шанса" onclick="factorial_function(1)"/>
   </div>
   </div>
 <div class="row">
@@ -222,14 +181,14 @@ include "menustyleforcalculatepagessidebar.php";
   <div class="input-group-prepend">
       <span class="input-group-text">Количество выбираемых объектов в поле 1</span>
     </div>
-    <input type='text' placeholder="" class='forDataForSmallScreen form-control' inputmode='numeric'>
+    <input type='text' placeholder="" class='forDoubleDataAmount form-control' inputmode='numeric'>
 </div>
 
 <div class="input-group mb-2">
   <div class="input-group-prepend">
     <span class="input-group-text">Общее количество объектов в поле 1</span>
   </div>
-  <input type='text' placeholder="" class='forDataForSmallScreen form-control' inputmode='numeric'>
+  <input type='text' placeholder="" class='forDoubleDataAllAmount form-control' inputmode='numeric'>
 </div>
 
 <label>Поле 2</label>
@@ -238,42 +197,21 @@ include "menustyleforcalculatepagessidebar.php";
   <div class="input-group-prepend">
       <span class="input-group-text">Количество выбираемых объектов в поле 2</span>
     </div>
-    <input type='text' placeholder="" class='forDataForSmallScreen form-control' inputmode='numeric'>
+    <input type='text' placeholder="" class='forDoubleDataAmount form-control' inputmode='numeric'>
 </div>
 
 <div class="input-group mb-2">
   <div class="input-group-prepend">
     <span class="input-group-text">Общее количество объектов в поле 2</span>
   </div>
-  <input type='text' placeholder="" class='forDataForSmallScreen form-control' inputmode='numeric'>
+  <input type='text' placeholder="" class='forDoubleDataAllAmount form-control' inputmode='numeric'>
 </div>
 
 <div class="input-group mb-2">
-  <div class="forDataForSmallScreen  alert alert-success" role="alert">Здесь будет результат расчета<!-- вывод сообщения --></div>
+  <div class="forDoubleDataResult  alert alert-success" role="alert">Здесь будет результат расчета<!-- вывод сообщения --></div>
 </div>
 
-          <script>
-          // Создание объектов класса с параметрами для конструктора
-          var game = new Game();
-          function gameplayforsmallscreen(){
-            let a=document.getElementsByClassName('forDataForSmallScreen')[0].value;
-            let b=document.getElementsByClassName('forDataForSmallScreen')[1].value;
-            document.getElementsByClassName('forDataForSmallScreen')[2].textContent=game.oneChance(a,b);
-            //game.oneChance(a,b);
-          }
-
-          // Создание объектов класса с параметрами для конструктора
-          var game1 = new Game();
-          function gameplayforsmallscreen1(){
-           let a=document.getElementsByClassName('forDataForSmallScreen')[3].value;
-            let b=document.getElementsByClassName('forDataForSmallScreen')[4].value;
-            let a1=document.getElementsByClassName('forDataForSmallScreen')[5].value;
-            let b1=document.getElementsByClassName('forDataForSmallScreen')[6].value;
-            document.getElementsByClassName('forDataForSmallScreen')[7].textContent=game1.doubleChance(a,b,a1,b1);
-          //  game1.doubleChance(a,b,a1,b1);
-          }</script>
-
-    <input type="button" class="btn btn-outline-info" value="нажать для расчета шанса" onclick="gameplayforsmallscreen1()"/>
+      <input type="button" class="btn btn-outline-info" value="нажать для расчета шанса" onclick="factorial_function_double_all_small(2)"/>
 
   </div>
   </div>
